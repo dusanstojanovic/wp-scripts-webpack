@@ -51,8 +51,8 @@ module.exports = {
 			],
 			reloadDelay: 1,
 			// https: {
-			// 	key: '/Users/dusan/Library/Application Support/Local/run/router/nginx/certs/dtsquared.local.key',
-			// 	cert: '/Users/dusan/Library/Application Support/Local/run/router/nginx/certs/dtsquared.local.crt',
+			// 	key: '/Users/YOURACCOUNTNAME/Library/Application Support/Local/run/router/nginx/certs/websitename.local.key',
+			// 	cert: '/Users/YOURACCOUNTNAME/Library/Application Support/Local/run/router/nginx/certs/websitename.local.crt',
 			// },
 		}),
 	],
