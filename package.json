@@ -27,7 +27,7 @@
 		"webpack-build-notifier": "^2.3.0"
 	},
 	"dependencies": {
-		"@studio-freight/lenis": "^0.2.23",
+		"@studio-freight/lenis": "^0.2.24",
 		"gsap": "^3.11.3",
 		"jquery": "^3.6.1",
 		"split-type": "^0.3.3",
