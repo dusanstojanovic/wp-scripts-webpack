@@ -1,0 +1,69 @@
+/*------------------------------------*\
+    #Buttons
+\*------------------------------------*/
+.c-btn {
+	--color-txt: #fff;
+	--color-txt-hov: #fff;
+	--color-bg: var(--c-black-900);
+	--color-bg-hov: var(--c-black-800);
+
+	appearance: none;
+	background-color: var(--color-bg);
+	border: 1px solid var(--color-bg);
+	color: var(--color-txt);
+	cursor: pointer;
+	display: inline-block;
+	font-family: var(--ff--secondary);
+	font-size: 14px;
+	font-weight: 700;
+	line-height: normal;
+	padding: 16px 40px;
+	position: relative;
+	text-transform: uppercase;
+	transition: all 0.3s var(--base-timing-functon);
+
+	&:active {
+		position: relative;
+		top: 1px;
+	}
+	&:focus {
+		outline: none;
+	}
+	&:hover {
+		color: var(--color-txt-hov);
+		background-color: var(--color-bg-hov);
+		border-color: var(--color-bg-hov);
+	}
+
+	&[disabled] {
+		cursor: not-allowed;
+		transition: none;
+
+		&:hover {
+			color: var(--color-txt);
+			background-color: var(--color-bg);
+			border-color: var(--color-bg);
+		}
+	}
+
+	/*---------------------------------------
+		Variations
+	---------------------------------------*/
+	/* block button */
+	&--block {
+		display: block;
+		text-align: center;
+		width: 100%;
+	}
+
+	/*---------------------------------------
+		Color variations
+	---------------------------------------*/
+	/* white buttton */
+	&--white {
+		--color-txt: var(--c-black-900);
+		--color-txt-hov: var(--c-black-900);
+		--color-bg: #fff;
+		--color-bg-hov: var(--c-black-50);
+	}
+}

@@ -1,0 +1,128 @@
+/*------------------------------------*\
+    #Basic values
+\*------------------------------------*/
+:root {
+	--base-font-size: 16px;
+	--base-line-height: 1.5;
+	--base-spacing-unit: 16px;
+	--base-border-radius: 4px;
+	--base-transition-time: 0.075s;
+	--base-timing-functon: cubic-bezier(0.165, 0.84, 0.44, 1);
+
+	/*---------------------------------------
+        Colors
+    ---------------------------------------*/
+
+	--c-brand-50: #f5f5fa;
+	--c-brand-100: #ebeaf4;
+	--c-brand-200: #d1d1e6;
+	--c-brand-300: #a8a8d1;
+	--c-brand-400: #7979b7;
+	--c-brand-500: #6767ab;
+	--c-brand-600: #464485;
+	--c-brand-700: #3b386c;
+	--c-brand-800: #34325a;
+	--c-brand-900: #2f2d4d;
+
+	--c-brand: var(--c-brand-500);
+
+	--c-black-50: #f7f7f7;
+	--c-black-100: #e3e3e3;
+	--c-black-200: #c8c8c8;
+	--c-black-300: #a4a4a4;
+	--c-black-400: #818181;
+	--c-black-500: #666666;
+	--c-black-600: #515151;
+	--c-black-700: #434343;
+	--c-black-800: #383838;
+	--c-black-900: #000000;
+
+	/*Link color*/
+	--c-link: var(--c-brand-500);
+	--c-link-hover: var(--c-brand-700);
+
+	/*------------------------------------*\
+        #Z-indexes
+    \*------------------------------------*/
+	--z-everest: 100;
+	--z-alps: 50;
+	--z-hill: 10;
+	--z-beach: 1;
+	--z-sea: 0;
+	--z-deadsea: -1;
+
+	/*------------------------------------*\
+        #Fonts
+    \*------------------------------------*/
+	--ff--primary: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+	--ff--secondary: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+	--ff--mono: Monaco, Consolas, "Lucida Console", monospace;
+}
+
+/*---------------------------------------
+    #Fonts imports
+---------------------------------------*/
+@font-face {
+	font-family: "Inter";
+	src: url(../fonts/Inter-Light.woff2) format("woff2");
+	font-weight: 300;
+	font-style: normal;
+	font-display: swap;
+}
+@font-face {
+	font-family: "Inter";
+	src: url(../fonts/Inter-Medium.woff2) format("woff2");
+	font-weight: 500;
+	font-style: normal;
+	font-display: swap;
+}
+@font-face {
+	font-family: "Inter";
+	src: url(../fonts/Inter-Bold.woff2) format("woff2");
+	font-weight: 700;
+	font-style: normal;
+	font-display: swap;
+}
+/*  */
+@font-face {
+	font-family: "Plus Jakarta Sans";
+	src: url(../fonts/PlusJakartaSans-Light.woff2) format("woff2");
+	font-weight: 300;
+	font-style: normal;
+	font-display: swap;
+}
+@font-face {
+	font-family: "Plus Jakarta Sans";
+	src: url(../fonts/PlusJakartaSans-LightItalic.woff2) format("woff2");
+	font-weight: 300;
+	font-style: italic;
+	font-display: swap;
+}
+@font-face {
+	font-family: "Plus Jakarta Sans";
+	src: url(../fonts/PlusJakartaSans-Bold.woff2) format("woff2");
+	font-weight: 700;
+	font-style: normal;
+	font-display: swap;
+}
+@font-face {
+	font-family: "Plus Jakarta Sans";
+	src: url(../fonts/PlusJakartaSans-BoldItalic.woff2) format("woff2");
+	font-weight: 700;
+	font-style: italic;
+	font-display: swap;
+}
+@font-face {
+	font-family: "Plus Jakarta Sans";
+	src: url(../fonts/PlusJakartaSans-ExtraBold.woff2) format("woff2");
+	font-weight: 800;
+	font-style: normal;
+	font-display: swap;
+}
+@font-face {
+	font-family: "Plus Jakarta Sans";
+	src: url(../fonts/PlusJakartaSans-ExtraBoldItalic.woff2) format("woff2");
+	font-weight: 800;
+	font-style: italic;
+	font-display: swap;
+}

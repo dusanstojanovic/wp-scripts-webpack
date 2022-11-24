@@ -1,0 +1,61 @@
+@use "sass:math";
+@use "sass:map";
+
+/*---------------------------------------
+    Breakpoints Mixin
+    usage: @include bp(bp320)  {...}
+---------------------------------------*/
+$breakpoints: (
+	"bp320": 320px,
+	"bp375": 375px,
+	"bp480": 480px,
+	"bp768": 768px,
+	"bp1024": 1024px,
+	"bp1280": 1280px,
+	"bp1366": 1366px,
+	"bp1600": 1600px,
+	"bp1920": 1920px,
+);
+@mixin bp($breakpoint) {
+	$value: map-get($breakpoints, $breakpoint); //  see _settings.vars.scss
+	@if $value != null {
+		@media (min-width: $value) {
+			@content;
+		}
+	} @else {
+		@warn "Unfortunately, no value could be retrieved from '#{$breakpoint}'. "
+        + "Please make sure it is defined in '$breakpoints' map.";
+	}
+}
+
+/*---------------------------------------
+    Fluid values
+	usage: @include fluid-value(margin, 64, 128, 480, 1500);
+---------------------------------------*/
+@mixin fluid-value($rule, $min-value, $max-value, $screen-min, $screen-max) {
+	#{$rule}: #{$min-value}px;
+	@media only screen and (min-width: #{$screen-min}px) {
+		#{$rule}: calc(#{$min-value}px + #{($max-value - $min-value)} * (100vw - #{$screen-min}px) / (#{$screen-max} - #{$screen-min}));
+	}
+	@media only screen and (min-width: #{$screen-max}px) {
+		#{$rule}: #{$max-value}px;
+	}
+}
+
+/*
+Returns a CSS clamp function which resolves to $size-at-min-width when page width is
+below $min-width,
+$size-at-max-width when page width is above $max-width,
+and linearly scales between the two between $min-width and $max-width
+usage:
+margin: clamp-calc(480px, 1024px, 240px, 520px);
+*/
+/*---------------------------------------
+	Clamped values
+---------------------------------------*/
+@function clamp-calc($min-width, $max-width, $size-at-min-width, $size-at-max-width) {
+	$slope: calc(($size-at-max-width - $size-at-min-width) / ($max-width - $min-width));
+	$y-axis-intersection: -1 * $min-width * $slope + $size-at-min-width;
+	$return-value: clamp(#{$size-at-min-width}, #{$y-axis-intersection} + #{$slope} * 100vw, #{$size-at-max-width});
+	@return $return-value;
+}

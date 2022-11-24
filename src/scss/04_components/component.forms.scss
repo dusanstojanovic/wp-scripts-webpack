@@ -1,0 +1,124 @@
+:root {
+	--form-border-width: 1px;
+	--form-padding: 12px;
+}
+
+/*------------------------------------*\
+    #Forms styles
+\*------------------------------------*/
+.c-form {
+	/*---------------------------------------
+        Group
+    ---------------------------------------*/
+	&__group {
+		display: block;
+	}
+
+	&__group + &__group {
+		margin-top: clamp-calc(480px, 1920px, 20px, 40px);
+	}
+
+	/*---------------------------------------
+		label
+	---------------------------------------*/
+	&__label {
+		display: block;
+		font-size: 18px;
+		font-weight: 700;
+		line-height: 1.2;
+		margin-bottom: 0.6em;
+	}
+
+	/*---------------------------------------
+		form controls
+	---------------------------------------*/
+	&__control {
+		appearance: none;
+		background: #fff;
+		border: var(--form-border-width) solid var(--c-black-200);
+		box-sizing: border-box;
+		font-size: 18px;
+		font-weight: 300;
+		line-height: normal;
+		padding: var(--form-padding) 18px;
+		transition: var(--base-transition-time);
+		width: 100%;
+
+		/*---------------------------------------
+			radios & checkboxes
+		---------------------------------------*/
+		@at-root label#{&} {
+			background: transparent;
+			border-color: transparent;
+			display: inline-block;
+			padding-left: 1.5em;
+			position: relative;
+			width: auto;
+
+			input {
+				height: 1rem;
+				left: 0;
+				position: absolute;
+				top: var(--form-padding);
+				width: 1rem;
+
+				&[type="checkbox"],
+				&[type="radio"] {
+					top: calc(var(--form-padding) - 2px);
+				}
+			}
+			&--block {
+				display: block;
+				width: 100%;
+			}
+		}
+
+		/* on focus */
+		&:focus {
+			border-color: var(--c-brand);
+			box-shadow: inset 0 0 0px 3px rgba(#6767ab, 0.2);
+			outline: 0;
+		}
+
+		/* select */
+		@at-root select#{&} {
+			background: #fff url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iNSIgdmlld0JveD0iMCAwIDIwIDUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHRpdGxlPjwvdGl0bGU+PGRlc2M+PC9kZXNjPjxwYXRoIGZpbGw9IiNEOEQ4RDgiIGQ9Ik00LjU1MSA0Ljc5NGwtNC41NTEtNC43OTVoOC45MzZ6Ii8+PC9zdmc+") 100% 50% no-repeat;
+			padding-right: 32px !important;
+		}
+
+		/* search */
+		&[type="search"] {
+			box-sizing: border-box;
+		}
+
+		/* placeholder text */
+		&::-moz-placeholder {
+			color: var(--c-black-200);
+			opacity: 1;
+		}
+		&:-ms-input-placeholder {
+			color: var(--c-black-200);
+		}
+		&::-webkit-input-placeholder {
+			color: var(--c-black-200);
+		}
+	}
+
+	/* form hint text */
+	&__hint {
+		display: block;
+		font-size: 16px;
+		margin-top: 8px;
+	}
+	&__label + &__hint {
+		margin-top: -8px;
+	}
+}
+
+/*---------------------------------------
+	autofill
+---------------------------------------*/
+input:-webkit-autofill {
+	box-shadow: inset 0 0 0px 9999px rgb(255, 255, 255);
+	-webkit-box-shadow: inset 0 0 0px 9999px rgb(255, 255, 255);
+}

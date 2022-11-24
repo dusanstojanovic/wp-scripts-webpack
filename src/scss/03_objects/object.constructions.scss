@@ -1,0 +1,42 @@
+/*------------------------------------*\
+    center v and h
+    - needs height
+\*------------------------------------*/
+.o-centervh {
+	display: grid;
+	place-items: center;
+
+	> :first-child {
+		margin-top: 0;
+	}
+	> :last-child {
+		margin-bottom: 0;
+	}
+}
+
+/*---------------------------------------
+    flag/media objects
+---------------------------------------*/
+.o-card {
+	/* vars */
+	--o-card--gap: 20px;
+	align-items: center;
+
+	display: grid;
+	gap: var(--o-card--gap);
+	grid-template-columns: auto 1fr;
+
+	> div {
+		> :first-child {
+			margin-top: 0;
+		}
+		> :last-child {
+			margin-bottom: 0;
+		}
+	}
+
+	/* media element */
+	&--media {
+		align-items: start;
+	}
+}

@@ -1,0 +1,54 @@
+@charset "UTF-8";
+
+/* settings */
+@import "00_settings/setting.vars";
+@import "01_tools/tool.mixins";
+@import "01_tools/tool.utils";
+
+/* resets */
+@import "02_defaults/default.normalize";
+@import "02_defaults/default.reset";
+@import "02_defaults/default.defaults";
+
+/* objects */
+@import "03_objects/object.grid";
+@import "03_objects/object.lists";
+@import "03_objects/object.constructions";
+@import "03_objects/object.icons";
+
+/* components */
+@import "04_components/component.layout";
+@import "04_components/component.typography";
+@import "04_components/component.header";
+@import "04_components/component.footer";
+@import "04_components/component.hero";
+@import "04_components/component.forms";
+@import "04_components/component.sections";
+@import "04_components/component.lists";
+@import "04_components/component.buttons";
+@import "04_components/component.sliders";
+@import "04_components/component.others";
+
+/* vendor css */
+@import "09_vendor/swiper-bundle";
+
+/* other */
+// @import '10_misc/shame';
+@import "02_defaults/default.print";
+
+/*---------------------------------------
+	Testing autoprefixer and mixins
+---------------------------------------*/
+// .zzzzz {
+// 	background: linear-gradient(#e98a00, #f5aa2f);
+// 	background: linear-gradient(217deg, rgba(255, 0, 0, 0.8), rgba(255, 0, 0, 0) 70.71%), linear-gradient(127deg, rgba(0, 255, 0, 0.8), rgba(0, 255, 0, 0) 70.71%), linear-gradient(336deg, rgba(0, 0, 255, 0.8), rgba(0, 0, 255, 0) 70.71%);
+// 	font-size: clamp-calc(480px, 1280px, 16px, 64px);
+// 	border-bottom: clamp-calc(480px, 1280px, 16px, 64px) solid #333;
+// 	display: flex;
+// 	display: grid;
+// 	appearance: none;
+
+// 	@at-root .selector#{&} {
+// 		display: block;
+// 	}
+// }

@@ -1,0 +1,41 @@
+/*---------------------------------------
+    Containers
+---------------------------------------*/
+.o-container {
+	max-width: calc(1620px + 2 * 20px);
+	padding-left: 20px;
+	padding-right: 20px;
+	margin: auto;
+
+	/* full */
+	&--full {
+		max-width: calc(1800px + 2 * 20px);
+	}
+	/* md */
+	&--md {
+		max-width: calc(960px + 2 * 20px);
+	}
+	/* sm */
+	&--sm {
+		max-width: calc(768px + 2 * 20px);
+	}
+
+	@include bp(bp1024) {
+		max-width: calc(1620px + 2 * 60px);
+		padding-left: 60px;
+		padding-right: 60px;
+
+		/* full*/
+		&--full {
+			max-width: calc(1800px + 2 * 60px);
+		}
+		/* md */
+		&--md {
+			max-width: calc(960px + 2 * 60px);
+		}
+		/* sm */
+		&--sm {
+			max-width: calc(768px + 2 * 60px);
+		}
+	}
+}

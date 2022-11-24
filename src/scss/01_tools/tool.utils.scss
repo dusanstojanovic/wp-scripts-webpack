@@ -1,0 +1,97 @@
+/*------------------------------------*\
+    #Margins
+\*------------------------------------*/
+/* margin reset */
+.u-mrg--reset {
+	> :first-child {
+		margin-top: 0;
+	}
+	> :last-child {
+		margin-bottom: 0;
+	}
+}
+
+/*---------------------------------------
+	margin increments
+	usage: class="w768:mt-3"
+---------------------------------------*/
+$screenWidths: 320, 768, 1024, 1366;
+@each $screenWidth in $screenWidths {
+	@media (min-width: (0px + $screenWidth)) {
+		@for $i from 0 through 4 {
+			.w#{$screenWidth} {
+				&\:mt-#{$i} {
+					margin-top: calc(var(--base-spacing-unit, 1rem) * #{$i});
+				}
+				&\:mb-#{$i} {
+					margin-bottom: calc(var(--base-spacing-unit, 1rem) * #{$i});
+				}
+			}
+		}
+	}
+}
+
+/*---------------------------------------
+    line clamp
+	usage: class="u-lines--3"
+---------------------------------------*/
+@for $i from 1 through 5 {
+	.u-lines--#{$i} {
+		display: -webkit-box;
+		-webkit-line-clamp: #{$i};
+		-webkit-box-orient: vertical;
+		overflow: hidden;
+	}
+}
+
+/*------------------------------------*\
+    #Text utilities
+\*------------------------------------*/
+.u-txt--center {
+	text-align: center !important;
+}
+.u-txt--up {
+	text-transform: uppercase !important;
+}
+
+/* truncate text */
+.u-txt--truncate {
+	max-width: 100%;
+	overflow: hidden !important;
+	text-overflow: ellipsis !important;
+	white-space: nowrap !important;
+	word-wrap: normal !important;
+}
+/* hyphenate text */
+.u-txt--hyphenate {
+	overflow-wrap: break-word;
+	word-wrap: break-word;
+	hyphens: auto;
+}
+
+/*------------------------------------*\
+    #Screen reader visible only, hidden on screens
+\*------------------------------------*/
+.u-srt {
+	border: 0;
+	clip: rect(1px, 1px, 1px, 1px);
+	clip-path: inset(50%);
+	height: 1px;
+	margin: -1px;
+	overflow: hidden;
+	padding: 0;
+	position: absolute !important;
+	width: 1px;
+	word-wrap: normal !important;
+}
+
+/*------------------------------------*\
+    ##Other utilities
+\*------------------------------------*/
+/* no animation flicker in webkit (future will-change)*/
+.u-noflicker {
+	backface-visibility: hidden;
+	perspective: 1000;
+	transform: translateZ(0);
+	transform-style: preserve-3d;
+}
