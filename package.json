@@ -56,6 +56,7 @@
 		"start": "wp-scripts start",
 		"build": "wp-scripts build",
 		"lint:scss": "wp-scripts lint-style 'src/scss/**/*.scss'",
-		"lint:js": "wp-scripts lint-js 'src/js/*.js'"
+		"lint:js": "wp-scripts lint-js 'src/js/*.js'",
+		"bundle": "dir-archiver --src . --dest themename.zip --exclude .DS_Store .stylelintrc.json .eslintrc .git .gitattributes .github .gitignore README.md composer.json composer.lock node_modules vendor package-lock.json package.json .travis.yml phpcs.xml.dist sass style.css.map yarn.lock .editorconfig .prettierrc webpack.config.js some-js-snippets.js functions-addons.php"
 	}
 }
