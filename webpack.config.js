@@ -20,7 +20,18 @@ module.exports = {
 	},
 	module: {
 		...defaultConfig.module,
-		rules: [...defaultConfig.module.rules],
+		rules: [
+			...defaultConfig.module.rules,
+			{
+				test: /\.(png|jpe?g|gif|svg|webp)$/,
+				type: 'asset',
+				parser: {
+					dataUrlCondition: {
+						maxSize: 5 * 1024, // 5kb
+					},
+				},
+			},
+		],
 	},
 	plugins: [
 		...defaultConfig.plugins,
