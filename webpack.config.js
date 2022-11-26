@@ -2,6 +2,7 @@ const defaultConfig = require('@wordpress/scripts/config/webpack.config');
 const IgnoreEmitWebPackPlugin = require('ignore-emit-webpack-plugin');
 const SVGSpritemapPlugin = require('svg-spritemap-webpack-plugin');
 const WebpackBuildNotifierPlugin = require('webpack-build-notifier');
+const CopyPlugin = require('copy-webpack-plugin');
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 
 const path = require('path');
@@ -27,8 +28,11 @@ module.exports = {
 				type: 'asset',
 				parser: {
 					dataUrlCondition: {
-						maxSize: 5 * 1024, // 5kb
+						maxSize: 2 * 1024, // 2kb
 					},
+				},
+				generator: {
+					filename: 'images/[name]-[contenthash][ext][query]',
 				},
 			},
 		],
@@ -36,6 +40,14 @@ module.exports = {
 	plugins: [
 		...defaultConfig.plugins,
 		new IgnoreEmitWebPackPlugin(['style.js']),
+		new CopyPlugin({
+			patterns: [
+				{
+					from: './src/img',
+					to: './img',
+				},
+			],
+		}),
 		new SVGSpritemapPlugin('./src/icons/**/*.svg', {
 			output: {
 				filename: '/images/icons.svg',

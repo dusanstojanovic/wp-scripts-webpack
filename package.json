@@ -19,6 +19,7 @@
 	"devDependencies": {
 		"@wordpress/scripts": "^24.6.0",
 		"browser-sync-webpack-plugin": "^2.3.0",
+		"copy-webpack-plugin": "^11.0.0",
 		"dir-archiver": "^2.1.0",
 		"ignore-emit-webpack-plugin": "^2.0.6",
 		"node-sass": "^8.0.0",
