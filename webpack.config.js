@@ -32,7 +32,7 @@ module.exports = {
 					},
 				},
 				generator: {
-					filename: 'images/[name]-[contenthash][ext][query]',
+					filename: 'img/[name]-[contenthash][ext][query]',
 				},
 			},
 		],
@@ -50,7 +50,7 @@ module.exports = {
 		}),
 		new SVGSpritemapPlugin('./src/icons/**/*.svg', {
 			output: {
-				filename: '/images/icons.svg',
+				filename: '/img/icons.svg',
 				svgo: true,
 				svg4everybody: false,
 			},
