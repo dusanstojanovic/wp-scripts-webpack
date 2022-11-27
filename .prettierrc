@@ -8,9 +8,9 @@
 			}
 		}
 	],
-    "jsxBracketSameLine": false,
+    "bracketSameLine": true,
     "jsxSingleQuote": true,
-    "printWidth": 800,
+    "printWidth": 200,
     "tabWidth": 4,
     "useTabs": true,
     "semi": true,
