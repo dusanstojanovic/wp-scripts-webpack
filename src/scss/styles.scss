@@ -41,7 +41,8 @@
 ---------------------------------------*/
 .zzzzz {
 	background: linear-gradient(#e98a00, #f5aa2f);
-	background: linear-gradient(217deg, rgba(255, 0, 0, 0.8), rgba(255, 0, 0, 0) 70.71%), linear-gradient(127deg, rgba(0, 255, 0, 0.8), rgba(0, 255, 0, 0) 70.71%), linear-gradient(336deg, rgba(0, 0, 255, 0.8), rgba(0, 0, 255, 0) 70.71%);
+	background: linear-gradient(217deg, rgba(255, 0, 0, 0.8), rgba(255, 0, 0, 0) 70.71%), linear-gradient(127deg, rgba(0, 255, 0, 0.8), rgba(0, 255, 0, 0) 70.71%),
+		linear-gradient(336deg, rgba(0, 0, 255, 0.8), rgba(0, 0, 255, 0) 70.71%);
 	font-size: clamp-calc(480px, 1280px, 16px, 64px);
 	border-bottom: clamp-calc(480px, 1280px, 16px, 64px) solid #333;
 	display: flex;
@@ -59,6 +60,6 @@
 .yyyyyy {
 	background-image: url(../img/bullet.svg);
 }
-.aaaaaaa {
+.zzzzzzzzzzzz {
 	background-image: url(../img/bgicon-m2.svg);
 }
