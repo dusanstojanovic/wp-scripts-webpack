@@ -17,7 +17,7 @@
 		"url": "https://github.com/Automattic/_s/issues"
 	},
 	"devDependencies": {
-		"@wordpress/scripts": "^25.0.0",
+		"@wordpress/scripts": "^25.3.0",
 		"browser-sync-webpack-plugin": "^2.3.0",
 		"copy-webpack-plugin": "^11.0.0",
 		"dir-archiver": "^2.1.0",
@@ -28,11 +28,11 @@
 		"webpack-build-notifier": "^2.3.0"
 	},
 	"dependencies": {
-		"@studio-freight/lenis": "^0.2.26",
-		"gsap": "^3.11.3",
-		"jquery": "^3.6.2",
+		"@studio-freight/lenis": "^0.2.28",
+		"gsap": "^3.11.4",
+		"jquery": "^3.6.3",
 		"split-type": "^0.3.3",
-		"swiper": "^8.4.5"
+		"swiper": "^9.0.4"
 	},
 	"rtlcssConfig": {
 		"options": {
