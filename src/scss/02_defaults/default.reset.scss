@@ -92,6 +92,7 @@ textarea {
 	resize: vertical;
 }
 textarea[contenteditable] {
+	appearance: none;
 	-webkit-appearance: none;
 }
 
