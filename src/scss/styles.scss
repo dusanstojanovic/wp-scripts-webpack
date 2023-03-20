@@ -63,3 +63,28 @@
 .zzzzzzzzzzzz {
 	background-image: url(../img/bgicon-m2.svg);
 }
+
+/*
+* Hover on one hides others
+*/
+/* fallback for browsers without :has */
+.ccccc:hover > a {
+	opacity: 0;
+
+	&:hover {
+		opacity: 1;
+	}
+}
+@supports selector(:has(*)) {
+	.ccccc:hover > a {
+		opacity: 1;
+	}
+	.ccccc:has(a:hover) {
+		> a {
+			opacity: 0;
+		}
+		> a:hover {
+			opacity: 1;
+		}
+	}
+}

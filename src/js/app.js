@@ -12,8 +12,8 @@ const { body } = document;
 const lenis = new Lenis({
 	duration: 1.2,
 	easing: t => (t === 1 ? 1 : 1 - Math.pow(2, -10 * t)), // https://easings.net
-	smooth: true,
-	direction: 'vertical',
+	smoothWheel: true,
+	orientation: 'vertical',
 });
 function raf(time) {
 	lenis.raf(time);
