@@ -1,16 +1,29 @@
+/*---------------------------------------
+	If on home page
+---------------------------------------*/
 <?php if ( is_front_page() ) : ?>
 <p>Hi</p>
 <?php endif; ?>
 
+/*---------------------------------------
+	Favicon stuff (goes in header.php)
+---------------------------------------*/
+<!-- Favicons stuff -->
+<link rel="icon" href="/favicon.ico" sizes="any" />
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+<link rel="manifest" href="/manifest.webmanifest" crossorigin="use-credentials" />
+<!-- End - Favicons stuff -->
+
 
 /*---------------------------------------
-    Shortcode
+    Shortcode in theme
 ---------------------------------------*/
 <?php echo do_shortcode("[contact-form-7 id=\"47\" title=\"send link\"]"); ?></div>
 
 
 /*---------------------------------------
-	Enqueue scripts and styles
+	Enqueue scripts and styles (goes in functions.php)
 ---------------------------------------*/
 function themename_scripts() {
 	wp_enqueue_style('themename-style', get_template_directory_uri() . '/dist/style.css', array(), filemtime(get_template_directory() . '/dist/style.css'), 'all');
@@ -31,7 +44,6 @@ Template Name: NameGoesHere
 */
 get_header();
 ?>
-
 
 
 // ---------------------------------------
@@ -56,7 +68,6 @@ get_header();
     wp_pagenavi();
 } ?>
 <?php $wp_query = null; $wp_query = $temp; wp_reset_postdata();?>
-
 
 
 // ---------------------------------------
@@ -132,6 +143,11 @@ get_header();
 
 
 /*---------------------------------------
+	Translate
+---------------------------------------*/
+<?php _e('Some text that needs multilanguage', 'themename-context'); ?>
+
+/*---------------------------------------
     Icons
 ---------------------------------------*/
 <svg class="o-icon" role="presentation">
@@ -160,7 +176,6 @@ get_header();
         echo wp_get_attachment_image( $image, $size );
     }
 ?>
-
 
 
 /*---------------------------------------
