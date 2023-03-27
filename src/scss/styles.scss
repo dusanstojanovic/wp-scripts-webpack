@@ -64,9 +64,9 @@
 	background-image: url(../img/bgicon-m2.svg);
 }
 
-/*
-* Hover on one hides others
-*/
+/*---------------------------------------
+	Hover on one hides others
+---------------------------------------*/
 /* fallback for browsers without :has */
 .ccccc:hover > a {
 	opacity: 0;
@@ -75,6 +75,7 @@
 		opacity: 1;
 	}
 }
+/* with :has */
 @supports selector(:has(*)) {
 	.ccccc:hover > a {
 		opacity: 1;
