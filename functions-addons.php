@@ -1,4 +1,25 @@
 <?php
+/*
+Plugin Name:  head remove unwanted stuff
+Plugin URI:   https://etondigital.com
+Description:  Functions.php remove unwanted stuff
+Version:      1.0
+Author:       EtonDigital
+Author URI:   https://etondigital.com
+License:      GPL2
+License URI:
+Text Domain:  etondigital
+Domain Path:  /languages
+*/
+
+
+
+
+/*---------------------------------------
+	remove emoji support
+---------------------------------------*/
+remove_action('wp_head', 'print_emoji_detection_script', 7);
+remove_action('wp_print_styles', 'print_emoji_styles');
 
 /*---------------------------------------
 	Remove unwanted WP stuff from <head>
@@ -21,16 +42,18 @@ global $themename;
 remove_action( 'wp_head', array( $themename, 'meta_generator_tag' ) );
 
 /*---------------------------------------
-	Enqueue scripts and styles
+	remove wp-embed
 ---------------------------------------*/
-function themename_scripts() {
-	wp_enqueue_style('themename-style', get_template_directory_uri() . '/dist/style.css', array(), filemtime(get_template_directory() . '/dist/style.css'), 'all');
-	wp_enqueue_script('themename-app', get_template_directory_uri() . '/dist/app.js', '', '', true);
-	wp_enqueue_script('themename-sliders', get_template_directory_uri() . '/dist/sliders.js', '', '', true);
-	wp_enqueue_script('themename-jquery', get_template_directory_uri() . '/dist/jquery.js', array('jquery'), '', true);
-	wp_dequeue_style( 'global-styles' );
-}
-add_action( 'wp_enqueue_scripts', 'themename_scripts' );
+add_action( 'wp_footer', function(){
+    wp_dequeue_script( 'wp-embed' );
+});
+
+add_action( 'wp_enqueue_scripts', function(){
+    // remove block library css
+    wp_dequeue_style( 'wp-block-library' );
+    // remove comment reply JS
+    wp_dequeue_script( 'comment-reply' );
+} );
 
 /*---------------------------------------
 	Remove JQuery migrate
@@ -95,7 +118,7 @@ remove_action( 'wp_body_open', 'wp_global_styles_render_svg_filters' );
 ---------------------------------------*/
 function themename_disable_self_pingbacks( &$links ) {
 	foreach ( $links as $l => $link )
-	if ( 0 === strpos( $link, get_option( 'home' ) ) )
+	if ( 0 === strpos( $link, home_url() ) )
 	unset($links[$l]);
 }
 add_action( 'pre_ping', 'themename_disable_self_pingbacks' );
@@ -108,3 +131,10 @@ function themename_remove_type_attr($tag, $handle) {
 }
 add_filter('style_loader_tag', 'themename_remove_type_attr', 10, 2);
 add_filter('script_loader_tag', 'themename_remove_type_attr', 10, 2);
+
+/*---------------------------------------
+	Remove Contact form 7 css/js
+---------------------------------------*/
+// add_filter( 'wpcf7_load_js', '__return_false' );
+add_filter( 'wpcf7_load_css', '__return_false' );
+add_filter('wpcf7_autop_or_not', '__return_false');
