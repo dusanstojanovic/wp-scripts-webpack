@@ -18,6 +18,82 @@ function stickyHeaderInit() {
 }
 
 /*---------------------------------------
+    Sticky header GSAP
+---------------------------------------*/
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+gsap.registerPlugin(ScrollTrigger);
+
+function stickyHeaderInit() {
+	const showAnim = gsap
+		.from('.c-header', {
+			yPercent: -100,
+			paused: true,
+			duration: 0.5,
+			ease: 'power1.inOut',
+		})
+		.progress(1);
+	ScrollTrigger.create({
+		start: '72px top',
+		end: 99999,
+		onUpdate: self => {
+			self.direction === -1 ? showAnim.play() : showAnim.reverse();
+		},
+	});
+}
+stickyHeaderInit();
+
+/*---------------------------------------
+    GSAP menu
+---------------------------------------*/
+function menuInit() {
+	const toggleMenu = document.querySelector('.home .js-open-menu');
+	if (toggleMenu) {
+		const tl = gsap.timeline({ defaults: { ease: 'power1.out', duration: 0.2 } });
+		tl.set('.home .c-nav-main > li', { opacity: 0, y: -15 });
+		let isOpen = false;
+
+		function animateIn() {
+			const tl = gsap.timeline({ defaults: { ease: 'power1.out', duration: 0.2 } });
+			tl.to('.home .c-nav-main > li', {
+				opacity: 1,
+				y: 0,
+				stagger: 0.04,
+			});
+			body.classList.add('is-menu-open');
+			toggleMenu.classList.add('is-active');
+			isOpen = true;
+		}
+		function animateOut() {
+			const tl = gsap.timeline({ defaults: { ease: 'power1.out', duration: 0.2 } });
+			tl.to('.home .c-nav-main > li', {
+				opacity: 0,
+				y: -15,
+				stagger: 0.04,
+			});
+			body.classList.remove('is-menu-open');
+			toggleMenu.classList.remove('is-active');
+			isOpen = false;
+		}
+		toggleMenu.addEventListener('click', () => {
+			if (!isOpen) {
+				animateIn();
+			} else {
+				animateOut();
+			}
+		});
+
+		const navMain = document.querySelector('.home .c-header__nav');
+		document.addEventListener('mouseup', function (e) {
+			if (!navMain.contains(e.target)) {
+				animateOut();
+			}
+		});
+	}
+}
+menuInit();
+
+/*---------------------------------------
     toggle menu
 ---------------------------------------*/
 function toggleMenuInit() {

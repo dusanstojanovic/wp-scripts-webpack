@@ -97,6 +97,76 @@ get_header();
 
 
 /*---------------------------------------
+	Taxonomy loop
+---------------------------------------*/
+<?php
+$term = get_queried_object();
+$args = array(
+	'tax_query' => array(
+		array(
+			'taxonomy' => 'IME_TAXONOMIJE',
+			'field' => 'slug',
+			'terms' => $term->slug
+		)
+	)
+);
+
+$the_query = new WP_Query( $args ); ?>
+<?php while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
+
+	...do whatever
+	<?php get_template_part( 'template-parts/content', get_post_type() ); ?>
+
+<?php endwhile;?>
+<?php wp_reset_postdata(); ?>
+
+
+/*---------------------------------------
+	Taxonomy loop without ONE term
+---------------------------------------*/
+<?php
+$term = get_queried_object();
+$args = array(
+	'tax_query' => array(
+		'relation' => 'AND',
+		array(
+			'taxonomy' => 'tip',
+			'field' => 'slug',
+			'terms' => $term->slug
+		),
+		array(
+			'taxonomy' => 'tip',
+			'field' => 'slug',
+			'terms' => 'ostali-projekti',
+			'operator' => 'NOT IN'
+		)
+	)
+);
+
+$the_query = new WP_Query( $args ); ?>
+<ul class="c-thumbgrid  c-thumbgrid--3x3">
+<?php while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
+	<li>
+		<a href="<?php the_permalink();?>">
+			<?php
+				$images = get_field('galerija_slika');
+				$image_1 = $images[0];
+				$size = 'slide-big';
+				if( $images ) {
+					echo wp_get_attachment_image( $image_1, $size, "", ["fetchpriority" => "high", "decoding" => "sync", "loading" => "eager" ] );
+				}
+			?>
+			<span class="c-thumbgrid__pretitle">
+				#<?php echo $term->slug; ?></span>
+			<h2 class="c-thumbgrid__title  u-lines--1"><?php the_title(); ?></h2>
+		</a>
+	</li>
+<?php endwhile;?>
+</ul>
+<?php wp_reset_postdata(); ?>
+
+
+/*---------------------------------------
     Nav
 ---------------------------------------*/
 <nav class="c-header__nav">
@@ -176,7 +246,14 @@ get_header();
         echo wp_get_attachment_image( $image, $size );
     }
 ?>
-
+<!-- ili za LCP -->
+<?php
+	$image = get_field('main_image');
+	$size = 'full'; // (thumbnail, medium, large, full or custom size)
+	if( $image ) {
+		echo wp_get_attachment_image( $image, $size, "", ["fetchpriority" => "high", "decoding" => "sync", "loading" => "eager" ] );
+	}
+?>
 
 /*---------------------------------------
     WP Customization
