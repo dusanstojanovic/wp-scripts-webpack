@@ -261,7 +261,7 @@ $the_query = new WP_Query( $args ); ?>
 <?php if (get_theme_mod('phone_number')): ?>
 <li>
     <svg class="o-icon" role="presentation">
-        <use xlink:href="<?php echo get_stylesheet_directory_uri(); ?>/assets/img/icons.svg#icon-tel"/>
+        <use xlink:href="<?php echo get_stylesheet_directory_uri(); ?>/dist/img/icons.svg#icon-tel"/>
     </svg>
     <?php echo get_theme_mod( 'phone_number' ); ?>
 </li>
