@@ -37,6 +37,18 @@
 @import "02_defaults/default.print";
 
 /*---------------------------------------
+	sticky footer when theres not much content
+---------------------------------------*/
+html,
+body {
+	height: 100%;
+}
+body > footer {
+	position: sticky;
+	top: 100vh;
+}
+
+/*---------------------------------------
 	Testing autoprefixer, mixins and css background images
 ---------------------------------------*/
 .zzzzz {
