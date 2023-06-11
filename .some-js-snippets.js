@@ -115,6 +115,31 @@ function toggleMenuInit() {
 }
 
 /*---------------------------------------
+	Toggle search
+---------------------------------------*/
+function toggleSearchInit() {
+	const toggleSearch = document.querySelector('.c-menu-search a');
+	const searchForm = document.querySelector('.search-form');
+	toggleSearch.addEventListener('click', function () {
+		searchForm.classList.toggle('is-active');
+		document.querySelector('.search-form input').focus();
+	});
+	document.addEventListener('mouseup', function (e) {
+		if (!searchForm.contains(e.target) && !toggleSearch.contains(e.target)) {
+			searchForm.classList.remove('is-active');
+		}
+	});
+
+	window.addEventListener('resize', function () {
+		const mediaQueryList = window.matchMedia('(max-width: 1024px)');
+		if (mediaQueryList.matches) {
+			searchForm.classList.remove('is-active');
+		}
+	});
+}
+toggleSearchInit();
+
+/*---------------------------------------
     Accordion
 ---------------------------------------*/
 function accordion() {

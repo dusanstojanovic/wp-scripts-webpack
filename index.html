@@ -9,6 +9,28 @@
 	</head>
 	<body>
 		<div class="o-container">
+			<h1>Dialog</h1>
+			<button onclick="d.showModal()">Open dialog</button>
+			<dialog id="d">
+				<h2>Dialog title</h2>
+				<p>
+					Lorem ipsum, dolor sit amet consectetur adipisicing elit. Molestiae ad cum rerum deleniti. Eveniet sed corrupti recusandae pariatur adipisci quod assumenda dicta, vel laudantium
+					eaque culpa quaerat itaque, explicabo labore.
+				</p>
+				<button onclick="d.close()">Close dialog</button>
+			</dialog>
+			<style>
+				dialog {
+					transition: all 0.5s;
+				}
+				dialog::backdrop {
+					background-color: rgba(0, 0, 0, 0.8);
+				}
+			</style>
+			<hr />
+			<h1>popover</h1>
+			<button popovertarget="poppinoff">open popover</button>
+			<div id="poppinoff" popover>Hey there</div>
 			<h1>
 				Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nesciunt aut non error molestias, optio quidem rerum rem! Ipsam aliquam quam, tempore accusantium, ex eaque iusto ad labore
 				odit, aut adipisci?
