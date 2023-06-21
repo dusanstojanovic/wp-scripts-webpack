@@ -1,6 +1,7 @@
 /*------------------------------------*\
     #Lists
 \*------------------------------------*/
+
 /**
  *  No bullets
  */
@@ -23,12 +24,12 @@
 		display: inline-block;
 		margin: 0;
 
-		&:after {
+		&::after {
 			content: "\002C""\00A0";
 		}
 
 		&:last-child {
-			&:after {
+			&::after {
 				display: none;
 			}
 		}
@@ -45,14 +46,14 @@
 		display: inline-block;
 		margin: 0;
 
-		&:after {
+		&::after {
 			margin: 0 0.5em;
 			content: "\002F";
 			opacity: 0.5;
 		}
 
 		&:last-child {
-			&:after {
+			&::after {
 				display: none;
 			}
 		}

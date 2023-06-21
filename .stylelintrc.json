@@ -1,11 +1,11 @@
 {
-    "extends": [
-        "@wordpress/stylelint-config/scss"
-    ],
-    "ignoreFiles": [
-        "scss/02_defaults/default.normalize.scss",
-        "scss/09_vendor/**/*.scss"
-    ],
+	"extends": [
+		"@wordpress/stylelint-config/scss"
+	],
+	"ignoreFiles": [
+		"src/scss/02_defaults/default.normalize.scss",
+		"src/scss/09_vendor/**/*.scss"
+	],
     "rules": {
         "font-family-no-missing-generic-family-keyword": null,
         "no-descending-specificity": null,
