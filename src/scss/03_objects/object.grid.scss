@@ -2,40 +2,27 @@
     Containers
 ---------------------------------------*/
 .o-container {
-	max-width: calc(1620px + 2 * 20px);
-	padding-left: 20px;
-	padding-right: 20px;
-	margin: auto;
+	--gutter: 20px;
+
+	max-width: calc(1620px + 2 * var(--gutter));
+	padding-inline-start: var(--gutter);
+	padding-inline-end: var(--gutter);
+	margin-inline: auto;
 
 	/* full */
 	&--full {
-		max-width: calc(1800px + 2 * 20px);
+		max-width: calc(1800px + 2 * var(--gutter));
 	}
 	/* md */
 	&--md {
-		max-width: calc(960px + 2 * 20px);
+		max-width: calc(960px + 2 * var(--gutter));
 	}
 	/* sm */
 	&--sm {
-		max-width: calc(768px + 2 * 20px);
+		max-width: calc(768px + 2 * var(--gutter));
 	}
 
 	@include bp(bp1024) {
-		max-width: calc(1620px + 2 * 60px);
-		padding-left: 60px;
-		padding-right: 60px;
-
-		/* full*/
-		&--full {
-			max-width: calc(1800px + 2 * 60px);
-		}
-		/* md */
-		&--md {
-			max-width: calc(960px + 2 * 60px);
-		}
-		/* sm */
-		&--sm {
-			max-width: calc(768px + 2 * 60px);
-		}
+		--gutter: 60px;
 	}
 }
