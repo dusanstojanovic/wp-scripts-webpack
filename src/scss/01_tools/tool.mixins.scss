@@ -16,10 +16,14 @@ $breakpoints: (
 	"bp1600": 1600px,
 	"bp1920": 1920px,
 );
+@function px-to-em($px) {
+	$ems: math.div($px, 16px) * 1em;
+	@return $ems;
+}
 @mixin bp($breakpoint) {
 	$value: map.get($breakpoints, $breakpoint); //  see _settings.vars.scss
 	@if $value {
-		@media (min-width: $value) {
+		@media (min-width: px-to-em($value)) {
 			@content;
 		}
 	} @else {
