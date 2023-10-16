@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
@@ -6,6 +6,13 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Document</title>
 		<link rel="stylesheet" href="dist/style.css" />
+
+		<!-- this goest to the end of <head> -->
+		<link rel="profile" href="https://gmpg.org/xfn/11" />
+		<link rel="icon" href="/favicon.png" sizes="image/png" />
+		<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+		<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+		<link rel="manifest" href="/manifest.webmanifest" crossorigin="use-credentials" />
 	</head>
 	<body>
 		<div class="o-container">
@@ -31,31 +38,62 @@
 			<h1>popover</h1>
 			<button popovertarget="poppinoff">open popover</button>
 			<div id="poppinoff" popover>Hey there</div>
-			<h1>
-				Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nesciunt aut non error molestias, optio quidem rerum rem! Ipsam aliquam quam, tempore accusantium, ex eaque iusto ad labore
-				odit, aut adipisci?
-			</h1>
-			<h2>
-				Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nesciunt aut non error molestias, optio quidem rerum rem! Ipsam aliquam quam, tempore accusantium, ex eaque iusto ad labore
-				odit, aut adipisci?
-			</h2>
-			<h3>
-				Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nesciunt aut non error molestias, optio quidem rerum rem! Ipsam aliquam quam, tempore accusantium, ex eaque iusto ad labore
-				odit, aut adipisci?
-			</h3>
-			<h4>
-				Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nesciunt aut non error molestias, optio quidem rerum rem! Ipsam aliquam quam, tempore accusantium, ex eaque iusto ad labore
-				odit, aut adipisci?
-			</h4>
-			<h5>
-				Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nesciunt aut non error molestias, optio quidem rerum rem! Ipsam aliquam quam, tempore accusantium, ex eaque iusto ad labore
-				odit, aut adipisci?
-			</h5>
-			<h6>
-				Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nesciunt aut non error molestias, optio quidem rerum rem! Ipsam aliquam quam, tempore accusantium, ex eaque iusto ad labore
-				odit, aut adipisci?
-			</h6>
+			<hr />
+			<div class="marquee">
+				<p>
+					Alfred Bester, Isaac Asimov, Philip K. Dick, Ursula Le Guin, Arthur C. Clarke, Roger Zelazny, Mary Shelley, Kazuo Ishiguro, Douglas Adams, J. R. R. Tolkien, Stanislaw Lem, Alfred
+					Bester, Isaac Asimov, Philip K. Dick, Ursula Le Guin, Arthur C. Clarke, Roger Zelazny, Mary Shelley, Kazuo Ishiguro, Douglas Adams, J. R. R. Tolkien, Stanislaw Lem,
+				</p>
+			</div>
+			<hr />
+			<div class="demohover">
+				<a href="">
+					<svg class="o-icon" role="presentation">
+						<use xlink:href="/dist/img/icons.svg#icon-facebook" />
+					</svg>
+				</a>
+				<a href="">
+					<svg class="o-icon" role="presentation">
+						<use xlink:href="/dist/img/icons.svg#icon-instagram" />
+					</svg>
+				</a>
+				<a href="">
+					<svg class="o-icon" role="presentation">
+						<use xlink:href="/dist/img/icons.svg#icon-linkedin" />
+					</svg>
+				</a>
+				<a href="">
+					<svg class="o-icon" role="presentation">
+						<use xlink:href="/dist/img/icons.svg#icon-tiktok" />
+					</svg>
+				</a>
+				<a href="">
+					<svg class="o-icon" role="presentation">
+						<use xlink:href="/dist/img/icons.svg#icon-twitter" />
+					</svg>
+				</a>
+				<a href="">
+					<svg class="o-icon" role="presentation">
+						<use xlink:href="/dist/img/icons.svg#icon-youtube" />
+					</svg>
+				</a>
+			</div>
+			<hr />
+			<h1>Lorem ipsum dolor sit amet</h1>
+			<h2>Lorem ipsum dolor sit amet</h2>
+			<h3>Lorem ipsum dolor sit amet</h3>
+			<h4>Lorem ipsum dolor sit amet</h4>
+			<h5>Lorem ipsum dolor sit amet</h5>
+			<h6>Lorem ipsum dolor sit amet</h6>
 		</div>
+
+		<footer style="background: #eee">
+			<div class="o-container">
+				<h1>This is footer</h1>
+				<small>Footer</small>
+			</div>
+		</footer>
+
 		<script src="dist/app.js" defer></script>
 	</body>
 </html>

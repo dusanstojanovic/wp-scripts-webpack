@@ -7,10 +7,10 @@
 	place-items: center;
 
 	> :first-child {
-		margin-top: 0;
+		margin-block-start: 0;
 	}
 	> :last-child {
-		margin-bottom: 0;
+		margin-block-end: 0;
 	}
 }
 
@@ -20,18 +20,18 @@
 .o-card {
 	/* vars */
 	--o-card--gap: 20px;
-	align-items: center;
 
 	display: grid;
-	gap: var(--o-card--gap);
+	align-items: center;
 	grid-template-columns: auto 1fr;
+	gap: var(--o-card--gap);
 
 	> div {
 		> :first-child {
-			margin-top: 0;
+			margin-block-start: 0;
 		}
 		> :last-child {
-			margin-bottom: 0;
+			margin-block-end: 0;
 		}
 	}
 

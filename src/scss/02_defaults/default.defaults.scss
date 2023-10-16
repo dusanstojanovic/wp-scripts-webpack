@@ -23,25 +23,6 @@ body {
 	width: 100%;
 }
 
-/*---------------------------------------
-	Lenis
----------------------------------------*/
-html.lenis {
-	height: auto;
-}
-.lenis.lenis-smooth {
-	scroll-behavior: auto;
-}
-.lenis.lenis-smooth [data-lenis-prevent] {
-	overscroll-behavior: contain;
-}
-.lenis.lenis-stopped {
-	overflow: hidden;
-}
-.lenis.lenis-scrolling iframe {
-	pointer-events: none;
-}
-
 // body {
 //     min-height: 100vh;
 //     /* mobile viewport bug fix */
@@ -135,14 +116,14 @@ li {
 }
 li,
 dd {
-	margin-left: var(--base-spacing-unit, 1rem);
+	margin-inline-start: var(--base-spacing-unit, 1rem);
 }
 
 dt {
 	font-weight: bold;
-	margin-top: var(--base-spacing-unit, 1rem);
+	margin-block-start: var(--base-spacing-unit, 1rem);
 	&:first-child {
-		margin-top: 0;
+		margin-block-start: 0;
 	}
 }
 
@@ -170,8 +151,8 @@ hr {
 blockquote {
 	font-size: calc(var(--base-font-size) * 1.25);
 	margin: 0 0 var(--base-spacing-unit, 1rem);
-	padding-left: calc(var(--base-spacing-unit, 1rem) * 1.5);
-	padding-right: calc(var(--base-spacing-unit, 1rem) * 1.5);
+	padding-inline-start: calc(var(--base-spacing-unit, 1rem) * 1.5);
+	padding-inline-end: calc(var(--base-spacing-unit, 1rem) * 1.5);
 }
 cite {
 	font-style: italic;

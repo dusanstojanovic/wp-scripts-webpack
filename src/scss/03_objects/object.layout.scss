@@ -1,0 +1,30 @@
+/*---------------------------------------
+    Containers
+---------------------------------------*/
+.o-container {
+	--gutter: 20px;
+
+	padding-inline: var(--gutter);
+	margin-inline: auto;
+
+	/* opinionated breakpoint */
+	@include bp(bp1024) {
+		--gutter: 60px;
+
+		/* default value */
+		max-width: calc(1360px + 2 * var(--gutter));
+
+		/* lg */
+		&--lg {
+			max-width: calc(1800px + 2 * var(--gutter));
+		}
+		/* md */
+		&--md {
+			max-width: calc(960px + 2 * var(--gutter));
+		}
+		/* sm */
+		&--sm {
+			max-width: calc(768px + 2 * var(--gutter));
+		}
+	}
+}

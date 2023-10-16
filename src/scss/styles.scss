@@ -11,7 +11,7 @@
 @import "02_defaults/default.defaults";
 
 /* objects */
-@import "03_objects/object.grid";
+@import "03_objects/object.layout";
 @import "03_objects/object.lists";
 @import "03_objects/object.constructions";
 @import "03_objects/object.icons";
@@ -30,6 +30,7 @@
 @import "04_components/component.others";
 
 /* vendor css */
+@import "09_vendor/lenis";
 @import "09_vendor/swiper-bundle";
 
 /* other */
@@ -37,80 +38,6 @@
 @import "02_defaults/default.print";
 
 /*---------------------------------------
-	Container queries
+	Delete
 ---------------------------------------*/
-.parent {
-	container: parent-div / inline-size;
-}
-
-@container parent-div (min-width: 500px) {
-	.child {
-		grid-template-columns: repeat(2, 1fr);
-	}
-}
-
-/*---------------------------------------
-	sticky footer when theres not much content
----------------------------------------*/
-html,
-body {
-	height: 100%;
-}
-body > footer {
-	position: sticky;
-	top: 100vh;
-}
-
-/*---------------------------------------
-	Testing autoprefixer, mixins and css background images
----------------------------------------*/
-.zzzzz {
-	background: linear-gradient(#e98a00, #f5aa2f);
-	background: linear-gradient(217deg, rgba(255, 0, 0, 0.8), rgba(255, 0, 0, 0) 70.71%), linear-gradient(127deg, rgba(0, 255, 0, 0.8), rgba(0, 255, 0, 0) 70.71%),
-		linear-gradient(336deg, rgba(0, 0, 255, 0.8), rgba(0, 0, 255, 0) 70.71%);
-	font-size: #{fluid(16px, 32px, 320px, 960px)};
-	border-bottom: clamp-calc(480px, 1280px, 16px, 64px) solid #333;
-	display: flex;
-	display: grid;
-	appearance: none;
-
-	@at-root .selector#{&} {
-		display: block;
-	}
-}
-
-.xxxxxx {
-	background-image: url(../img/pattern.png);
-}
-.yyyyyy {
-	background-image: url(../img/bullet.svg);
-}
-.zzzzzzzzzzzz {
-	background-image: url(../img/bgicon-m2.svg);
-}
-
-/*---------------------------------------
-	Hover on one hides others
----------------------------------------*/
-/* fallback for browsers without :has */
-.ccccc:hover > a {
-	opacity: 0;
-
-	&:hover {
-		opacity: 1;
-	}
-}
-/* with :has */
-@supports selector(:has(*)) {
-	.ccccc:hover > a {
-		opacity: 1;
-	}
-	.ccccc:has(a:hover) {
-		> a {
-			opacity: 0;
-		}
-		> a:hover {
-			opacity: 1;
-		}
-	}
-}
+@import "demo";

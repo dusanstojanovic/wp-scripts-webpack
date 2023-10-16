@@ -2,12 +2,12 @@
     #icons (see https://cloudfour.com/thinks/our-svg-icon-process/)
 \*------------------------------------*/
 .o-icon {
+	position: relative;
+	top: -0.0625em;
 	display: inline-block;
-	fill: currentcolor;
 	height: 1em;
 	width: 1em;
 	vertical-align: middle;
-	position: relative;
-	top: -0.0625em;
 	font-size: 24px;
+	fill: currentColor;
 }

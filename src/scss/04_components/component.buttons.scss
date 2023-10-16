@@ -7,20 +7,20 @@
 	--color-bg: var(--c-black-900);
 	--color-bg-hov: var(--c-black-800);
 
-	appearance: none;
-	background-color: var(--color-bg);
-	border: 1px solid var(--color-bg);
-	color: var(--color-txt);
-	cursor: pointer;
+	position: relative;
 	display: inline-block;
+	border: 1px solid var(--color-bg);
+	background-color: var(--color-bg);
+	padding: 16px 40px;
+	text-transform: uppercase;
 	font-family: var(--ff--secondary);
 	font-size: 14px;
-	font-weight: 700;
 	line-height: normal;
-	padding: 16px 40px;
-	position: relative;
-	text-transform: uppercase;
+	font-weight: 700;
+	color: var(--color-txt);
+	cursor: pointer;
 	transition: all 0.3s var(--base-timing-functon);
+	appearance: none;
 
 	&:active {
 		position: relative;
@@ -30,8 +30,8 @@
 		outline: none;
 	}
 	&:hover {
-		color: var(--color-txt-hov);
 		background-color: var(--color-bg-hov);
+		color: var(--color-txt-hov);
 		border-color: var(--color-bg-hov);
 	}
 
@@ -40,8 +40,8 @@
 		transition: none;
 
 		&:hover {
-			color: var(--color-txt);
 			background-color: var(--color-bg);
+			color: var(--color-txt);
 			border-color: var(--color-bg);
 		}
 	}
@@ -52,8 +52,8 @@
 	/* block button */
 	&--block {
 		display: block;
-		text-align: center;
 		width: 100%;
+		text-align: center;
 	}
 
 	/*---------------------------------------

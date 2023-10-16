@@ -79,7 +79,7 @@ time,
 mark,
 audio,
 video {
-	text-align: left;
+	text-align: start;
 }
 
 html,
@@ -90,6 +90,7 @@ body {
 
 textarea {
 	resize: vertical;
+	form-sizing: normal;
 }
 textarea[contenteditable] {
 	appearance: none;
@@ -97,16 +98,16 @@ textarea[contenteditable] {
 }
 
 code {
-	line-height: 1;
 	font-family: Monaco, Consolas, "Bitstream Vera Sans Mono", "Andale Mono", "DejaVu Sans Mono", "Lucida Console", monospace;
 	font-size: 0.9em;
+	line-height: 1;
 }
 
 img,
 svg {
 	display: inline-block;
-	max-width: 100%;
 	height: auto;
+	max-width: 100%;
 	vertical-align: middle;
 	font-style: italic;
 }
@@ -119,7 +120,7 @@ img:not([alt]) {
 } */
 
 svg {
-	fill: currentcolor;
+	fill: currentColor;
 }
 
 /* google maps images */
@@ -131,8 +132,8 @@ img[width],
 img[height]{max-width: none;}
 */
 figure {
-	max-width: 100% !important;
 	margin: 0 0 1em;
+	max-width: 100% !important;
 }
 figure > img {
 	display: block;
@@ -148,8 +149,8 @@ video {
 /* ----------- */
 textarea:active,
 textarea:focus {
-	cursor: text;
 	outline: none;
+	cursor: text;
 }
 
 abbr[title],
@@ -164,9 +165,9 @@ ins {
 /* Remove all animations and transitions for people that prefer not to see them */
 @media (prefers-reduced-motion: reduce) {
 	* {
+		scroll-behavior: auto !important;
+		transition-duration: 0.01ms !important;
 		animation-duration: 0.01ms !important;
 		animation-iteration-count: 1 !important;
-		transition-duration: 0.01ms !important;
-		scroll-behavior: auto !important;
 	}
 }

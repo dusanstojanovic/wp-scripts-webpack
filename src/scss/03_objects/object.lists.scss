@@ -9,7 +9,7 @@
 	list-style-type: none;
 
 	li {
-		margin-left: 0;
+		margin-inline-start: 0;
 		list-style-type: none;
 	}
 }
@@ -25,7 +25,7 @@
 		margin: 0;
 
 		&::after {
-			content: "\002C""\00A0";
+			content: "\002C" "\00A0";
 		}
 
 		&:last-child {
