@@ -3,18 +3,27 @@ const IgnoreEmitWebPackPlugin = require('ignore-emit-webpack-plugin');
 const SVGSpritemapPlugin = require('svg-spritemap-webpack-plugin');
 const WebpackBuildNotifierPlugin = require('webpack-build-notifier');
 const CopyPlugin = require('copy-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 
 const path = require('path');
+
+// all JS entries
+const fs = require('fs');
+const jsSourcePath = path.resolve(process.cwd(), 'src/js');
+const entry = fs.readdirSync(jsSourcePath).reduce((acc, fileName) => {
+	if (fileName.endsWith('.js')) {
+		const entryName = path.basename(fileName, '.js');
+		acc[entryName] = path.resolve(jsSourcePath, fileName);
+	}
+	return acc;
+}, {});
 
 module.exports = {
 	...defaultConfig,
 	entry: {
 		style: path.resolve(process.cwd(), 'src/scss', 'styles.scss'),
-
-		app: path.resolve(process.cwd(), 'src/js', 'app.js'),
-		jquery: path.resolve(process.cwd(), 'src/js', 'jquery.js'),
-		sliders: path.resolve(process.cwd(), 'src/js', 'sliders.js'),
+		...entry,
 	},
 	output: {
 		path: path.resolve(__dirname, 'dist'),
@@ -32,13 +41,21 @@ module.exports = {
 					},
 				},
 				generator: {
-					filename: 'img/[name]-[contenthash][ext][query]',
+					filename: 'img/[name][ext][query]',
+				},
+			},
+			{
+				test: /\.(woff|woff2|eot|ttf|otf)$/,
+				type: 'asset/resource',
+				generator: {
+					filename: 'fonts/[name][ext]', // Removed [contenthash]
 				},
 			},
 		],
 	},
 	plugins: [
 		...defaultConfig.plugins,
+		new CleanWebpackPlugin(),
 		new IgnoreEmitWebPackPlugin(['style.js']),
 		new CopyPlugin({
 			patterns: [

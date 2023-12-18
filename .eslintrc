@@ -1,16 +1,18 @@
 {
-    "extends": [
-        "plugin:@wordpress/eslint-plugin/esnext"
-    ],
-    "env": {
-        "browser": true
-    },
+	"extends": ["plugin:@wordpress/eslint-plugin/esnext"],
+	"env": {
+		"browser": true
+	},
 	"rules": {
 		"space-in-parens": ["error", "never"],
-		"space-before-function-paren": ["error", {
-			"anonymous": "ignore",
-			"named": "ignore",
-			"asyncArrow": "ignore"
-		}]
+		"array-bracket-spacing": ["error", "never"],
+		"space-before-function-paren": [
+			"error",
+			{
+				"anonymous": "ignore",
+				"named": "ignore",
+				"asyncArrow": "ignore"
+			}
+		]
 	}
 }
