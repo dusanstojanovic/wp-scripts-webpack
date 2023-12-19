@@ -106,6 +106,8 @@ code {
 img,
 svg {
 	display: inline-block;
+	background-size: cover;
+	background-repeat: no-repeat;
 	height: auto;
 	max-width: 100%;
 	vertical-align: middle;

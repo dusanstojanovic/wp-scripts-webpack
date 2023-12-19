@@ -1,3 +1,15 @@
+/**
+ * Webpack configuration file.
+ *
+ * Imports the default WordPress webpack config and extends it with custom configuration.
+ *
+ * Adds entry points for SCSS and JS files.
+ * Configures output path.
+ * Extends module rules to handle images and fonts.
+ * Adds plugins for cleaning build folder, ignoring files, copying images, generating SVG sprite,
+ * notifying on builds, and enabling live browser refresh.
+ * Exports the modified webpack config object.
+ */
 const defaultConfig = require('@wordpress/scripts/config/webpack.config');
 const IgnoreEmitWebPackPlugin = require('ignore-emit-webpack-plugin');
 const SVGSpritemapPlugin = require('svg-spritemap-webpack-plugin');
