@@ -2,7 +2,6 @@
 	"extends": ["@wordpress/stylelint-config/scss"],
 	"ignoreFiles": ["src/scss/02_defaults/default.normalize.scss", "src/scss/09_vendor/**/*.scss"],
 	"rules": {
-		"arrow-parens": ["error", "as-needed"],
 		"font-family-no-missing-generic-family-keyword": null,
 		"no-descending-specificity": null,
 		"block-no-empty": null,

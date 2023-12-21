@@ -1,7 +1,8 @@
 import Swiper from 'swiper';
-import { Navigation, Grid, Autoplay, Controller } from 'swiper/modules';
+import { Navigation } from 'swiper/modules';
 // Swiper.use([Navigation, Pagination, Grid, FreeMode, EffectFade, Autoplay, Controller]);
-Swiper.use([Navigation, Grid, Autoplay, Controller]);
+Swiper.use(Navigation);
+// Swiper.use([Navigation, Grid, Autoplay, Controller]);
 
 /*---------------------------------------
 	Experts slider

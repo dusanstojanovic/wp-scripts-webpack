@@ -5,15 +5,15 @@
  *  Custom functions, support, custom post types and more.
  */
 
-/*------------------------------------*\
+/*------------------------------------
 	External Modules/Files
-\*------------------------------------*/
+------------------------------------*/
 
 //require_once( get_template_directory() . '/includes/cpt.php' );
 
-/*------------------------------------*\
+/*------------------------------------
 	Theme Support
-\*------------------------------------*/
+------------------------------------*/
 
 
 if (function_exists('add_theme_support'))
@@ -25,9 +25,9 @@ if (function_exists('add_theme_support'))
     add_theme_support('post-thumbnails');
     add_image_size('large', 700, '', true); // Large Thumbnail
     add_image_size('medium', 250, '', true); // Medium Thumbnail
-  //  add_image_size('small-loop', 340, 240, true); 
- //   add_image_size('big-loop', 570, 410, true); 
- //   add_image_size('featured-img', 1160, 490, true); 
+  //  add_image_size('small-loop', 340, 240, true);
+ //   add_image_size('big-loop', 570, 410, true);
+ //   add_image_size('featured-img', 1160, 490, true);
 
     // Enables post and comment RSS feed links to head
     add_theme_support('automatic-feed-links');
@@ -38,9 +38,9 @@ if (function_exists('add_theme_support'))
     load_theme_textdomain('esem', get_template_directory() . '/languages');
 }
 
-/*------------------------------------*\
+/*------------------------------------
 	Functions
-\*------------------------------------*/
+------------------------------------*/
 
 // HTML5 Blank navigation
 function esem_nav()
@@ -305,9 +305,9 @@ function esemcomments($comment, $args, $depth)
 	<?php endif; ?>
 <?php }
 
-/*------------------------------------*\
+/*------------------------------------
 	Actions + Filters + ShortCodes
-\*------------------------------------*/
+------------------------------------*/
 
 // Add Actions
 
@@ -360,9 +360,9 @@ add_shortcode('html5_shortcode_demo_2', 'html5_shortcode_demo_2'); // Place [htm
 // [html5_shortcode_demo] [html5_shortcode_demo_2] Here's the page title! [/html5_shortcode_demo_2] [/html5_shortcode_demo]
 
 
-/*------------------------------------*\
+/*------------------------------------
 	ShortCode Functions
-\*------------------------------------*/
+------------------------------------*/
 
 // Shortcode Demo with Nested Capability
 function html5_shortcode_demo($atts, $content = null)
@@ -379,11 +379,11 @@ function html5_shortcode_demo_2($atts, $content = null) // Demo Heading H2 short
 
 
 
-/*------------------------------------*\
+/*------------------------------------
     Add acf options page
-\*------------------------------------*/
+------------------------------------*/
 if( function_exists('acf_add_options_page') ) {
-    
+
     acf_add_options_page(array(
         'page_title'    => 'Theme options',
         'menu_title'    => 'Theme options',
@@ -391,7 +391,7 @@ if( function_exists('acf_add_options_page') ) {
         'capability'    => 'update_core',
         'redirect'      => false
     ));
-    
+
 }
 
 
@@ -409,19 +409,19 @@ function count_content_words( $content ) {
 
 
 
-/*------------------------------------*\
+/*------------------------------------
     LOAD MORE POSTS ON SCROLL
-\*------------------------------------*/
+------------------------------------*/
 function misha_my_load_more_scripts() {
- 
-    global $wp_query; 
- 
+
+    global $wp_query;
+
     // In most cases it is already included on the page and this line can be removed
     //wp_enqueue_script('jquery');
- 
+
     // register our main script but do not enqueue it yet
     wp_register_script( 'my_loadmore', get_stylesheet_directory_uri() . '/assets/js/loadmore.js', array('jquery') );
- 
+
     // now the most interesting part
     // we have to pass parameters to myloadmore.js script but we can get the parameters values only in PHP
     // you can define variables directly in your HTML but I decided that the most proper way is wp_localize_script()
@@ -431,31 +431,31 @@ function misha_my_load_more_scripts() {
         'current_page' => get_query_var( 'paged' ) ? get_query_var('paged') : 1,
         'max_page' => $wp_query->max_num_pages
     ) );
- 
+
     wp_enqueue_script( 'my_loadmore' );
 }
- 
+
 add_action( 'wp_enqueue_scripts', 'misha_my_load_more_scripts' );
 
 
 
 function misha_loadmore_ajax_handler(){
- 
+
     // prepare our arguments for the query
     $args = json_decode( stripslashes( $_POST['query'] ), true );
     $args['paged'] = $_POST['page'] + 1; // we need next page to be loaded
     $args['post_status'] = 'publish';
- 
+
     // it is always better to use WP_Query but not here
     query_posts( $args );
- 
+
     if( have_posts() ) :
         $counter = 0;
         // run the loop
-        while( have_posts() ): the_post(); 
+        while( have_posts() ): the_post();
             $counter++;
     ?>
- 
+
 
     <?php if ($counter == 1 || $counter == 8): ?>
         <div class="col12">
@@ -478,7 +478,7 @@ function misha_loadmore_ajax_handler(){
                         <?php echo get_the_excerpt(); ?>
                     </div>
                     <div class="post-cats">
-                        <?php 
+                        <?php
                             $categories = get_the_category();
                             if ($categories) {
                                 foreach( $categories as $category ) {
@@ -487,7 +487,7 @@ function misha_loadmore_ajax_handler(){
                                     echo '<a class="'.strtolower($category->name).'"  style="color:'.$cat_color.'; background: linear-gradient(0deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.95)), '.$cat_color.';" href="'. esc_url( get_category_link($category->term_id)). '">' . $category->name . '</a>';
                                 }
                             }
-                            
+
 
                         ?>
                     </div>
@@ -514,7 +514,7 @@ function misha_loadmore_ajax_handler(){
                     <?php echo get_the_excerpt(); ?>
                 </div>
                 <div class="post-cats">
-                    <?php 
+                    <?php
                         $categories = get_the_category();
                         if ($categories) {
                             foreach( $categories as $category ) {
@@ -523,13 +523,13 @@ function misha_loadmore_ajax_handler(){
                                 echo '<a class="'.strtolower($category->name).'"  style="color:'.$cat_color.'; background: linear-gradient(0deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.95)), '.$cat_color.';" href="'. esc_url( get_category_link($category->term_id)). '">' . $category->name . '</a>';
                             }
                         }
-                        
+
 
                     ?>
                 </div>
-                
+
             </div>
-        </div>      
+        </div>
     <?php endif; ?>
 
 
@@ -537,16 +537,16 @@ function misha_loadmore_ajax_handler(){
 
 
 
- 
- 
+
+
        <?php  endwhile;
- 
+
     endif;
     die; // here we exit the script and even no wp_reset_query() required!
 }
- 
- 
- 
+
+
+
 add_action('wp_ajax_loadmore', 'misha_loadmore_ajax_handler'); // wp_ajax_{action}
 add_action('wp_ajax_nopriv_loadmore', 'misha_loadmore_ajax_handler'); // wp_ajax_nopriv_{action}
 
@@ -559,7 +559,7 @@ function add_query_vars($Vars) {
 
 return $Vars;
 }
- 
+
 // hook add_query_vars function into query_vars
 add_filter('query_vars', 'add_query_vars');
 
@@ -608,7 +608,7 @@ function esem_content(){
             }elseif($block['acf_fc_layout'] == 'programmes_zig_zag'){
                 include(locate_template('blocks/programmes_zig_zag.php'));
             }
-            
+
         }
     }
 }
@@ -685,16 +685,16 @@ add_action('acf/input/admin_head', 'my_acf_admin_head');
 
 
 
-/*------------------------------------*\
+/*------------------------------------
     EXTEND NAV WAKLER FOR MOBILE MEGA MENU
-\*------------------------------------*/
+------------------------------------*/
 class dynamicSubMenu extends Walker_Nav_Menu {
     function end_el(&$output, $item, $depth=0, $args=array()) {
        $parent_cat = get_term_by( 'name', $item->title, 'product_cat' );
        global $post;;
        $currentpostID = $post->ID;
        if(  $item->title == "Programmes" ){
-     
+
          $programmes_page = get_page_by_path( 'programmes' );
 
 
@@ -717,18 +717,18 @@ if ( $parent->have_posts() ) :
         } else {
             $output .= '<li class="child-item"><a href="'.get_the_permalink().'">'.get_the_title( ).'</a>';
         }
-    
+
     $output .= '</li>';
-    endwhile; 
+    endwhile;
  $output .= '</ul>';
- endif; wp_reset_postdata(); 
-            
-
-           
+ endif; wp_reset_postdata();
 
 
 
-            $output .= "</li>\n";  
+
+
+
+            $output .= "</li>\n";
 
         } elseif ($item->title == "The School"){
          $programmes_page = get_page_by_path( 'the-school' );
@@ -754,7 +754,7 @@ if ( $parent->have_posts() ) :
             $output .= '<li class="child-item"><a href="'.get_the_permalink().'">'.get_the_title( ).'</a>';
         }
     $output .= '</li>';
-    endwhile; 
+    endwhile;
  $output .= '</ul>';
  endif; wp_reset_postdata();
         }//if title

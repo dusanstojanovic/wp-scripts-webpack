@@ -1,6 +1,6 @@
-/*------------------------------------*\
+/*------------------------------------
     #Basic values
-\*------------------------------------*/
+------------------------------------*/
 :root {
 	--base-font-size: 16px;
 	--base-line-height: 1.5;
@@ -41,9 +41,9 @@
 	--c-link: var(--c-brand-500);
 	--c-link-hover: var(--c-brand-700);
 
-	/*------------------------------------*\
+	/*------------------------------------
         #Z-indexes
-    \*------------------------------------*/
+    ------------------------------------*/
 	--z-everest: 100;
 	--z-alps: 50;
 	--z-hill: 10;
@@ -51,33 +51,33 @@
 	--z-sea: 0;
 	--z-deadsea: -1;
 
-	/*------------------------------------*\
+	/*------------------------------------
         #Fonts
-    \*------------------------------------*/
-	--ff--primary: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
-	--ff--secondary: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
-	--ff--mono: Monaco, Consolas, "Lucida Console", monospace;
+    ------------------------------------*/
+	--ff--primary: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+	--ff--secondary: "Plus Jakarta Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+	--ff--mono: ui-monospace, "Cascadia Code", "Source Code Pro", Menlo, Consolas, "DejaVu Sans Mono", monospace;
 }
 
 /*---------------------------------------
     #Fonts imports
 ---------------------------------------*/
 @font-face {
-	font-family: "Inter";
+	font-family: Inter;
 	src: url(../fonts/Inter-Light.woff2) format("woff2");
 	font-weight: 300;
 	font-style: normal;
 	font-display: swap;
 }
 @font-face {
-	font-family: "Inter";
+	font-family: Inter;
 	src: url(../fonts/Inter-Medium.woff2) format("woff2");
 	font-weight: 500;
 	font-style: normal;
 	font-display: swap;
 }
 @font-face {
-	font-family: "Inter";
+	font-family: Inter;
 	src: url(../fonts/Inter-Bold.woff2) format("woff2");
 	font-weight: 700;
 	font-style: normal;
