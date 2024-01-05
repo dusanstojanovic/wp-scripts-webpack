@@ -55,12 +55,6 @@ remove_action( 'wp_head', array( $themename, 'meta_generator_tag' ) );
 add_action( 'wp_footer', function(){
 	wp_dequeue_script( 'wp-embed' );
 });
-add_action( 'wp_enqueue_scripts', function(){
-	// remove block library css
-	wp_dequeue_style( 'wp-block-library' );
-	// remove comment reply JS
-	wp_dequeue_script( 'comment-reply' );
-} );
 
 /*---------------------------------------
 	Remove JQuery migrate
@@ -119,6 +113,19 @@ if (is_admin()) {
 	Remove svg duotone
 ---------------------------------------*/
 remove_action( 'wp_body_open', 'wp_global_styles_render_svg_filters' );
+
+/*---------------------------------------
+	Disable users rest routes
+---------------------------------------*/
+add_filter('rest_endpoints', function( $endpoints ) {
+    if ( isset( $endpoints['/wp/v2/users'] ) ) {
+        unset( $endpoints['/wp/v2/users'] );
+    }
+    if ( isset( $endpoints['/wp/v2/users/(?P<id>[\d]+)'] ) ) {
+        unset( $endpoints['/wp/v2/users/(?P<id>[\d]+)'] );
+    }
+    return $endpoints;
+});
 
 /*---------------------------------------
 	Disable self pingbacks
@@ -211,19 +218,6 @@ if( function_exists('acf_add_options_page') ) {
 // 		'redirect'      => false
 // 	));
 // }
-
-/*---------------------------------------
-	Disable users rest routes
----------------------------------------*/
-add_filter('rest_endpoints', function( $endpoints ) {
-    if ( isset( $endpoints['/wp/v2/users'] ) ) {
-        unset( $endpoints['/wp/v2/users'] );
-    }
-    if ( isset( $endpoints['/wp/v2/users/(?P<id>[\d]+)'] ) ) {
-        unset( $endpoints['/wp/v2/users/(?P<id>[\d]+)'] );
-    }
-    return $endpoints;
-});
 
 /*---------------------------------------
 	ACF gutenberg blocks

@@ -5,6 +5,7 @@
 <p>Hi</p>
 <?php endif; ?>
 
+
 /*---------------------------------------
 	Favicon stuff (goes in header.php)
 ---------------------------------------*/
@@ -20,19 +21,6 @@
     Shortcode in theme
 ---------------------------------------*/
 <?php echo do_shortcode("[contact-form-7 id=\"47\" title=\"send link\"]"); ?></div>
-
-
-/*---------------------------------------
-	Enqueue scripts and styles (goes in functions.php)
----------------------------------------*/
-function themename_scripts() {
-	wp_enqueue_style('themename-style', get_template_directory_uri() . '/dist/style.css', array(), filemtime(get_template_directory() . '/dist/style.css'), 'all');
-	wp_enqueue_script('themename-app', get_template_directory_uri() . '/dist/app.js', '', '', true);
-	wp_enqueue_script('themename-sliders', get_template_directory_uri() . '/dist/sliders.js', '', '', true);
-	wp_enqueue_script('themename-jquery', get_template_directory_uri() . '/dist/jquery.js', array('jquery'), '', true);
-	wp_dequeue_style( 'global-styles' );
-}
-add_action( 'wp_enqueue_scripts', 'themename_scripts' );
 
 
 /*---------------------------------------
@@ -61,7 +49,7 @@ get_header();
     );
 ?>
 <?php while ($wp_query->have_posts()) : $wp_query->the_post(); ?>
-    ...
+    <!-- code goes here -->
 <?php endwhile;?>
 </ul>
 <?php if (function_exists('wp_pagenavi')) {
@@ -80,7 +68,8 @@ get_header();
 			'order'               => 'ASC',
 			'posts_per_page'      => 12,
 			'no_found_rows'       => true,
-			'meta_query' => array(
+            // perhaps use tax_query to filter
+			'meta_query'          => array(
 				array(
 					'key'     => 'case_study',
 					'value'   => '"yes"',
@@ -91,7 +80,7 @@ get_header();
     );
 ?>
 <?php while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
-...
+    <!-- code goes here -->
 <?php endwhile;?>
 <?php wp_reset_postdata(); ?>
 
@@ -112,20 +101,6 @@ get_header();
         );
     ?>
 </nav>
-
-
-/*---------------------------------------
-	Disable users rest routes
----------------------------------------*/
-add_filter('rest_endpoints', function( $endpoints ) {
-    if ( isset( $endpoints['/wp/v2/users'] ) ) {
-        unset( $endpoints['/wp/v2/users'] );
-    }
-    if ( isset( $endpoints['/wp/v2/users/(?P<id>[\d]+)'] ) ) {
-        unset( $endpoints['/wp/v2/users/(?P<id>[\d]+)'] );
-    }
-    return $endpoints;
-});
 
 /*---------------------------------------
     custom taxonomy terms with current
