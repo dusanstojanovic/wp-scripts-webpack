@@ -220,121 +220,33 @@ if( function_exists('acf_add_options_page') ) {
 // }
 
 /*---------------------------------------
+	Check for unescaped html in ACF fields
+---------------------------------------*/
+add_action( 'acf/will_remove_unsafe_html', 'print_backtrace_for_unsafe_html_removal', 10, 4 );
+add_action( 'acf/removed_unsafe_html', 'print_backtrace_for_unsafe_html_removal', 10, 4 );
+function print_backtrace_for_unsafe_html_removal( $function, $selector, $field_object, $post_id ) {
+	echo '<h4 style="color:red">Detected Potentially Unsafe HTML Modification</h4>';
+	echo '<pre>';
+	debug_print_backtrace();
+	echo '</pre>';
+}
+
+/*---------------------------------------
 	ACF gutenberg blocks
 ---------------------------------------*/
-add_action('acf/init', 'my_acf_init_block_types');
-function my_acf_init_block_types() {
-	// Check function exists.
-	if( function_exists('acf_register_block_type') ) {
-		acf_register_block_type(array(
-			'name'              => 'zigzag',
-			'title'             => __('Zig Zag section'),
-			'render_template'   => 'gutenberg-blocks/zigzag.php',
-			'category'          => 'formatting',
-			'icon'              => 'info-outline',
-			'keywords'          => array( 'zigzag', 'zig zag', 'themename' ),
-			'mode'              => 'edit',
-			// 'enqueue_style'     => get_template_directory_uri() . '/dist/css/screen.min.css',
-		));
-		acf_register_block_type(array(
-			'name'              => 'footer_cta',
-			'title'             => __('Footer CTA section'),
-			'render_template'   => 'gutenberg-blocks/cta-footer.php',
-			'category'          => 'formatting',
-			'icon'              => 'info-outline',
-			'keywords'          => array( 'footer', 'cta', 'themename' ),
-			'mode'              => 'edit',
-			// 'enqueue_style'     => get_template_directory_uri() . '/dist/css/screen.min.css',
-		));
-		acf_register_block_type(array(
-			'name'              => 'black_section',
-			'title'             => __('Black section'),
-			'render_template'   => 'gutenberg-blocks/section-black.php',
-			'category'          => 'formatting',
-			'icon'              => 'info-outline',
-			'keywords'          => array( 'Black', 'Black section', 'themename' ),
-			'mode'              => 'edit',
-			// 'enqueue_style'     => get_template_directory_uri() . '/dist/css/screen.min.css',
-		));
-		acf_register_block_type(array(
-			'name'              => 'our_work',
-			'title'             => __('Our Work section'),
-			'render_template'   => 'gutenberg-blocks/section-our-work.php',
-			'category'          => 'formatting',
-			'icon'              => 'info-outline',
-			'keywords'          => array( 'work', 'Our Work section', 'themename' ),
-			'mode'              => 'edit',
-			// 'enqueue_style'     => get_template_directory_uri() . '/dist/css/screen.min.css',
-		));
-		acf_register_block_type(array(
-			'name'              => 'years',
-			'title'             => __('Years of Work section'),
-			'render_template'   => 'gutenberg-blocks/section-years.php',
-			'category'          => 'formatting',
-			'icon'              => 'info-outline',
-			'keywords'          => array( 'work', 'years', 'Years of Work section', 'themename' ),
-			'mode'              => 'edit',
-			// 'enqueue_style'     => get_template_directory_uri() . '/dist/css/screen.min.css',
-		));
-		acf_register_block_type(array(
-			'name'              => 'our_story',
-			'title'             => __('Our Story section'),
-			'render_template'   => 'gutenberg-blocks/section-our-story.php',
-			'category'          => 'formatting',
-			'icon'              => 'info-outline',
-			'keywords'          => array( 'story', 'Our Story section', 'themename' ),
-			'mode'              => 'edit',
-			// 'enqueue_style'     => get_template_directory_uri() . '/dist/css/screen.min.css',
-		));
-		acf_register_block_type(array(
-			'name'              => 'work_single',
-			'title'             => __('Single work section'),
-			'render_template'   => 'gutenberg-blocks/section-work-single.php',
-			'category'          => 'formatting',
-			'icon'              => 'info-outline',
-			'keywords'          => array( 'work', 'Single work section', 'themename' ),
-			'mode'              => 'edit',
-			// 'enqueue_style'     => get_template_directory_uri() . '/dist/css/screen.min.css',
-		));
-		acf_register_block_type(array(
-			'name'              => 'section',
-			'title'             => __('Section'),
-			'render_template'   => 'gutenberg-blocks/section-section.php',
-			'category'          => 'formatting',
-			'icon'              => 'info-outline',
-			'keywords'          => array( 'section', 'Section', 'themename' ),
-			'mode'              => 'edit',
-			// 'enqueue_style'     => get_template_directory_uri() . '/dist/css/screen.min.css',
-		));
-		acf_register_block_type(array(
-			'name'              => 'services',
-			'title'             => __('4 services Section'),
-			'render_template'   => 'gutenberg-blocks/section-4-services.php',
-			'category'          => 'formatting',
-			'icon'              => 'info-outline',
-			'keywords'          => array( 'services', '4 services Section', 'themename' ),
-			'mode'              => 'edit',
-			// 'enqueue_style'     => get_template_directory_uri() . '/dist/css/screen.min.css',
-		));
-		acf_register_block_type(array(
-			'name'              => 'services_list',
-			'title'             => __('Numbered services Section'),
-			'render_template'   => 'gutenberg-blocks/section-numbered-services.php',
-			'category'          => 'formatting',
-			'icon'              => 'info-outline',
-			'keywords'          => array( 'services', 'Numbered services Section', 'themename' ),
-			'mode'              => 'edit',
-			// 'enqueue_style'     => get_template_directory_uri() . '/dist/css/screen.min.css',
-		));
-		acf_register_block_type(array(
-			'name'              => 'heading_image',
-			'title'             => __('Heading with overlaping image'),
-			'render_template'   => 'gutenberg-blocks/section-heading-image.php',
-			'category'          => 'formatting',
-			'icon'              => 'info-outline',
-			'keywords'          => array( 'heading', 'Heading with overlaping image', 'themename' ),
-			'mode'              => 'edit',
-			// 'enqueue_style'     => get_template_directory_uri() . '/dist/css/screen.min.css',
-		));
-	}
+add_action( 'init', 'register_acf_blocks' );
+function register_acf_blocks() {
+	// Home page
+	register_block_type( __DIR__ . '/blocks/intro-home' );
+	register_block_type( __DIR__ . '/blocks/zigzag' );
+	register_block_type( __DIR__ . '/blocks/focus-home' );
+	register_block_type( __DIR__ . '/blocks/testimonials' );
+	register_block_type( __DIR__ . '/blocks/certs-home' );
+	register_block_type( __DIR__ . '/blocks/partners-customers' );
+
+	// Products page
+	register_block_type( __DIR__ . '/blocks/intro-products' );
+	register_block_type( __DIR__ . '/blocks/product' );
+	register_block_type( __DIR__ . '/blocks/calendar' );
+	register_block_type( __DIR__ . '/blocks/partner-quote' );
 }
