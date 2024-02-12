@@ -17,7 +17,7 @@
 		"url": "https://github.com/Automattic/_s/issues"
 	},
 	"devDependencies": {
-		"@wordpress/scripts": "^27.1.0",
+		"@wordpress/scripts": "^27.2.0",
 		"browser-sync-webpack-plugin": "^2.3.0",
 		"clean-webpack-plugin": "^4.0.0",
 		"copy-webpack-plugin": "^12.0.2",
@@ -33,7 +33,7 @@
 		"gsap": "^3.12.5",
 		"jquery": "^3.7.1",
 		"split-type": "^0.3.4",
-		"swiper": "^11.0.5"
+		"swiper": "^11.0.6"
 	},
 	"rtlcssConfig": {
 		"options": {
