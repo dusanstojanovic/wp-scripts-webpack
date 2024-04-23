@@ -1,30 +1,39 @@
 /*---------------------------------------
     Containers
 ---------------------------------------*/
+/**
+ * A responsive container component that centers its content and applies a variable gutter size.
+ *
+ * The container is defined with the following custom properties:
+ * - `--gutter`: The size of the horizontal padding on the container.
+ *
+ * At larger screen sizes (above 1024px), the gutter size is increased to 60px, and the container can have different max-width variants:
+ * - `--sm`: A smaller container with a max-width of 768px + 2 * `--gutter`.
+ * - `--md`: A medium-sized container with a max-width of 960px + 2 * `--gutter`.
+ * - `--lg`: A larger container with a max-width of 1800px + 2 * `--gutter`.
+ */
 .o-container {
 	--gutter: 20px;
-
-	padding-inline: var(--gutter);
 	margin-inline: auto;
+	padding-inline: var(--gutter);
 
 	/* opinionated breakpoint */
 	@include bp(bp1024) {
 		--gutter: 60px;
 
-		/* default value */
 		max-width: calc(1360px + 2 * var(--gutter));
 
-		/* lg */
-		&--lg {
-			max-width: calc(1800px + 2 * var(--gutter));
+		/* sm */
+		&--sm {
+			max-width: calc(768px + 2 * var(--gutter));
 		}
 		/* md */
 		&--md {
 			max-width: calc(960px + 2 * var(--gutter));
 		}
-		/* sm */
-		&--sm {
-			max-width: calc(768px + 2 * var(--gutter));
+		/* lg */
+		&--lg {
+			max-width: calc(1800px + 2 * var(--gutter));
 		}
 	}
 }
@@ -32,8 +41,19 @@
 /*---------------------------------------
 	Grids
 ---------------------------------------*/
+/**
+ * A responsive grid layout with a variable number of columns and gutters.
+ *
+ * The grid is defined with the following custom properties:
+ * - `--gap`: The gap/gutter size between grid items.
+ * - `--column-count`: The number of columns in the grid.
+ *
+ * The grid items are sized using `minmax()` to ensure a minimum width of 240px, and a maximum width that fills the available space evenly.
+ *
+ * At larger screen sizes (above 768px), the gap size is increased to 32px.
+ */
 .o-grid {
-	--gap: 32px;
+	--gap: 24px;
 	--column-count: 3;
 
 	display: grid;
@@ -50,4 +70,49 @@
 			1fr
 		)
 	);
+
+	/* opinionated breakpoint */
+	@include bp(bp768) {
+		--gap: 32px;
+	}
+}
+
+/*---------------------------------------
+	Flex basic grid
+---------------------------------------*/
+/**
+ * A responsive flex-based grid layout with a variable gap size.
+ *
+ * The grid is defined with the following custom properties:
+ * - `--gap`: The gap/gutter size between grid items, which is fluid between 24px and 32px.
+ *
+ * The grid items are sized to fill the available width, with a minimum width of 240px and a maximum width of 320px on larger screens.
+ *
+ * At smaller screen sizes (below 480px), the grid items are stacked vertically. At larger screen sizes, the grid items are laid out horizontally with wrapping.
+ */
+.o-flex {
+	display: flex;
+	gap: #{fluid(24px, 32px)};
+	flex-flow: column;
+	justify-content: center;
+	margin: 0;
+
+	> div,
+	> a {
+		width: 100%;
+		flex: 1;
+	}
+
+	@include bp(bp480) {
+		flex-flow: row;
+		flex-wrap: wrap;
+
+		> div,
+		> a {
+			max-width: 320px;
+			min-width: 240px;
+			width: 100%;
+			flex: 1;
+		}
+	}
 }
