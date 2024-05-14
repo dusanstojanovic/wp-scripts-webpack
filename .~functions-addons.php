@@ -201,6 +201,19 @@ function disable_bulk_actions($actions){
 add_filter('bulk_actions-plugins','disable_bulk_actions');
 
 /*---------------------------------------
+	Register patterns
+---------------------------------------*/
+function register_custom_pattern_categories() {
+    if (function_exists('register_block_pattern_category')) {
+        register_block_pattern_category(
+            'themename-patterns', // Slug of the category
+            array('label' => __('themename patterns', 'themename')) // The label of the category
+        );
+    }
+}
+add_action('init', 'register_custom_pattern_categories');
+
+/*---------------------------------------
 	ACF
 ---------------------------------------*/
 /*---------------------------------------

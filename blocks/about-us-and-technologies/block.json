@@ -1,0 +1,33 @@
+{
+	"name": "acf/about-us-technologies",
+	"title": "About us and technologies",
+	"description": "About us and technologies",
+	"category": "formatting",
+	"icon": "info-outline",
+	"keywords": ["About us and technologies", "inacta"],
+	"acf": {
+		"mode": "preview",
+		"renderTemplate": "block-about-us-technologies.php"
+	},
+	"supports": {
+		"anchor": true,
+		"align": true,
+		"color": {
+			"text": true,
+			"background": true
+		}
+	},
+	"attributes": {
+		"align": {
+			"type": "string",
+			"default": "full"
+		}
+	},
+	"example": {
+		"attributes": {
+			"data": {
+				"block_editor_preview": "/blocks/about-us-and-technologies/preview.png"
+			}
+		}
+	}
+}
