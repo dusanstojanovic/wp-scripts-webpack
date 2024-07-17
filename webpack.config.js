@@ -20,7 +20,13 @@ const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 
 const path = require('path');
 
-// all JS entries
+/**
+ * Generates an object of JavaScript entry points for Webpack, where the keys are the file names (without the .js extension) and the values are the absolute paths to the corresponding JavaScript files.
+ *
+ * This function reads the contents of the `src/js` directory, finds all files with a `.js` extension, and creates an entry object with the file names as keys and the absolute paths as values.
+ *
+ * @returns {Object} An object of JavaScript entry points for Webpack.
+ */
 const fs = require('fs');
 const jsSourcePath = path.resolve(process.cwd(), 'src/js');
 const entry = fs.readdirSync(jsSourcePath).reduce((acc, fileName) => {
