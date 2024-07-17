@@ -2,7 +2,7 @@
 
 1. Find/replace `themename` to your theme name
 2. Add your theme files
-  2.1. Source files are in `src/` while compiled files are in `dist/`
+  Source files are in `src/` while compiled files are in `dist/`
 3. `npm install`
 4. for development: `npm start`
 5. for production: `npm run build`
