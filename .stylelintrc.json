@@ -2,11 +2,20 @@
 	"extends": ["@wordpress/stylelint-config/scss"],
 	"ignoreFiles": ["src/scss/02_defaults/default.normalize.scss", "src/scss/09_vendor/**/*.scss"],
 	"rules": {
-		"font-family-no-missing-generic-family-keyword": null,
+		"rule-empty-line-before": [
+			"always-multi-line",
+			{
+				"except": ["first-nested"],
+				"ignore": ["after-comment", "inside-block"]
+			}
+		],
+		"function-url-quotes": ["always"],
+		"declaration-colon-newline-after": null,
+		"value-list-comma-newline-after": null,
+		"value-keyword-case": null,
 		"no-descending-specificity": null,
 		"block-no-empty": null,
 		"no-duplicate-selectors": null,
-		"font-family-no-duplicate-names": null,
 		"selector-class-pattern": null
 	}
 }

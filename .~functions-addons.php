@@ -250,16 +250,6 @@ function print_backtrace_for_unsafe_html_removal( $function, $selector, $field_o
 add_action( 'init', 'register_acf_blocks' );
 function register_acf_blocks() {
 	// Home page
-	register_block_type( __DIR__ . '/blocks/intro-home' );
-	register_block_type( __DIR__ . '/blocks/zigzag' );
-	register_block_type( __DIR__ . '/blocks/focus-home' );
-	register_block_type( __DIR__ . '/blocks/testimonials' );
-	register_block_type( __DIR__ . '/blocks/certs-home' );
-	register_block_type( __DIR__ . '/blocks/partners-customers' );
-
-	// Products page
-	register_block_type( __DIR__ . '/blocks/intro-products' );
-	register_block_type( __DIR__ . '/blocks/product' );
-	register_block_type( __DIR__ . '/blocks/calendar' );
-	register_block_type( __DIR__ . '/blocks/partner-quote' );
+	register_block_type( __DIR__ . '/blocks/about-us-and-technologies' );
+	// register_block_type( __DIR__ . '/blocks/testimonials' );
 }

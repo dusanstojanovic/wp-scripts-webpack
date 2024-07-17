@@ -18,7 +18,7 @@
 	overflow: hidden;
 
 	p {
-		outline: 1px solid red;
+		outline: 1px solid rgb(255, 0, 0);
 		width: max-content;
 		animation: anim-marquee 4s infinite linear;
 
@@ -27,6 +27,7 @@
 		}
 	}
 }
+
 @keyframes anim-marquee {
 	to {
 		translate: -10%;
@@ -41,6 +42,7 @@ body {
 	min-height: 100svh;
 	height: 100%;
 }
+
 body > footer {
 	position: sticky;
 	top: 100vh;
@@ -65,13 +67,15 @@ body > footer {
 }
 
 .xxxxxx {
-	background-image: url(../img/pattern.png);
+	background-image: url("../img/pattern.png");
 }
+
 .yyyyyy {
-	background-image: url(../img/bullet.svg);
+	background-image: url("../img/bullet.svg");
 }
+
 .zzzzzzzzzzzz {
-	background-image: url(../img/bgicon-m2.svg);
+	background-image: url("../img/bgicon-m2.svg");
 }
 
 /*---------------------------------------

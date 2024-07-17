@@ -1,13 +1,14 @@
-# Simple webpack WP theme workflow based on @wordpress/scripts (https://www.npmjs.com/package/@wordpress/scripts)
+# Simple webpack WP theme scaffolding, based on @wordpress/scripts (https://www.npmjs.com/package/@wordpress/scripts)
 
-Find/replace `themename` to your theme name
+1. Find/replace `themename` to your theme name
+2. Add your theme files
+  2.1. Source files are in `src/` while compiled files are in `dist/`
+3. `npm install`
+4. for development: `npm start`
+5. for production: `npm run build`
+6. for archiving pure theme to zip: `npm run bundle`
 
-1. `npm install`
-2. for development: `npm start`
-3. for production: `npm run build`
-4. for archiving pure theme to zip: `npm run bundle`
-
-### Composer stuff (I don't use)
+### Composer stuff (I don't use it for now)
 
 ```sh
 $ composer install
