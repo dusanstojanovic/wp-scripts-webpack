@@ -1,13 +1,14 @@
 {
 	"name": "acf/about-us-technologies",
-	"title": "About us and technologies",
-	"description": "About us and technologies",
+	"title": "My block",
+	"description": "My block description",
 	"category": "formatting",
 	"icon": "info-outline",
-	"keywords": ["About us and technologies", "inacta"],
+	"keywords": ["My block", "inacta"],
+	"style": ["file:./my-block.css"],
 	"acf": {
 		"mode": "preview",
-		"renderTemplate": "block-about-us-technologies.php"
+		"renderTemplate": "block-my-block.php"
 	},
 	"supports": {
 		"anchor": true,
@@ -26,7 +27,7 @@
 	"example": {
 		"attributes": {
 			"data": {
-				"block_editor_preview": "/blocks/about-us-and-technologies/preview.png"
+				"block_editor_preview": "/blocks/my-block/preview.png"
 			}
 		}
 	}

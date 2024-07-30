@@ -249,7 +249,18 @@ function print_backtrace_for_unsafe_html_removal( $function, $selector, $field_o
 ---------------------------------------*/
 add_action( 'init', 'register_acf_blocks' );
 function register_acf_blocks() {
-	// Home page
-	register_block_type( __DIR__ . '/blocks/about-us-and-technologies' );
-	// register_block_type( __DIR__ . '/blocks/testimonials' );
+	register_block_type( __DIR__ . '/blocks/my-block' );
 }
+
+function enqueue_my_block_script() {
+	if ( has_block( 'acf/my-block' ) ) {
+		wp_enqueue_script(
+			'my-block-script',
+			get_template_directory_uri() . '/dist/block-my-block.js',
+			array(), // Dependencies
+			null, // Version
+			true // In footer
+		);
+	}
+}
+add_action( 'wp_enqueue_scripts', 'enqueue_my_block_script' );
