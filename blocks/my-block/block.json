@@ -16,7 +16,9 @@
 		"color": {
 			"text": true,
 			"background": true
-		}
+		},
+		"jsx": true,
+		"inner_blocks": true
 	},
 	"attributes": {
 		"align": {
