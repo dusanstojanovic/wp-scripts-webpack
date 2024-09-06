@@ -22,7 +22,7 @@
 
 <!-- wp:column {"className":"u-mrg\u002d\u002dreset  c-txt\u002d\u002dbody-lg js-stagger-appear"} -->
 <div class="wp-block-column u-mrg--reset  c-txt--body-lg js-stagger-appear"><!-- wp:paragraph -->
-<p>Mit diesem Projekt haben 3D AG und Inacta eine Plattform entwickelt, die den Prozess von der Etikettenproduktion, über die Hersteller, bis zum Endnutzer abdeckt. Die Plattform ermöglicht:</p>
+<p>Mit diesem Projekt haben 3D AG und themename eine Plattform entwickelt, die den Prozess von der Etikettenproduktion, über die Hersteller, bis zum Endnutzer abdeckt. Die Plattform ermöglicht:</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:list -->

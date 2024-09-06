@@ -8,7 +8,7 @@
 5. for production: `npm run build`
 6. for archiving pure theme to zip: `npm run bundle`
 
-### Composer stuff (I don't use it for now)
+### Composer commands (I don't use it - for now)
 
 ```sh
 $ composer install

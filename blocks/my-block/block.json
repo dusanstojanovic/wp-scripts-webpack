@@ -1,10 +1,10 @@
 {
-	"name": "acf/about-us-technologies",
+	"name": "acf/my-block",
 	"title": "My block",
 	"description": "My block description",
 	"category": "formatting",
 	"icon": "info-outline",
-	"keywords": ["My block", "inacta"],
+	"keywords": ["My block", "themename"],
 	"style": ["file:./my-block.css"],
 	"acf": {
 		"mode": "preview",

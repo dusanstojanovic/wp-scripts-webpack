@@ -13,28 +13,31 @@
  * - `--lg`: A larger container with a max-width of 1800px + 2 * `--gutter`.
  */
 .o-container {
-	--gutter: 20px;
+	--gutter: 16px;
+
 	margin-inline: auto;
+	max-width: calc(1128px + 2 * var(--gutter));
 	padding-inline: var(--gutter);
 
+	/* sm */
+	&--sm {
+		max-width: calc(768px + 2 * var(--gutter));
+	}
+	/* md */
+	&--md {
+		max-width: calc(960px + 2 * var(--gutter));
+	}
+	/* lg */
+	&--lg {
+		max-width: calc(1280px + 2 * var(--gutter));
+	}
+
 	/* opinionated breakpoint */
+	@include bp(bp576) {
+		--gutter: 24px;
+	}
 	@include bp(bp1024) {
-		--gutter: 60px;
-
-		max-width: calc(1360px + 2 * var(--gutter));
-
-		/* sm */
-		&--sm {
-			max-width: calc(768px + 2 * var(--gutter));
-		}
-		/* md */
-		&--md {
-			max-width: calc(960px + 2 * var(--gutter));
-		}
-		/* lg */
-		&--lg {
-			max-width: calc(1800px + 2 * var(--gutter));
-		}
+		--gutter: 40px;
 	}
 }
 
@@ -103,7 +106,7 @@
 		flex: 1;
 	}
 
-	@include bp(bp480) {
+	@include bp(bp576) {
 		flex-flow: row;
 		flex-wrap: wrap;
 

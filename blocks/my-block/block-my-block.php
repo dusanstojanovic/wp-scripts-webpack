@@ -28,7 +28,7 @@ else :
 	}
 
 	// Initial class and style setup based on predefined colors
-	$className = 'c-section  c-section--about-us-technologies  has-decoration';
+	$className = 'c-section  c-section--my-block';
 	if (!empty($block['backgroundColor'])) {
 		$className .= ' has-' . $block['backgroundColor'] . '-background-color  has-background';
 	} else {
@@ -59,7 +59,7 @@ else :
 		<?php endif; ?>
 
 		<?php if( get_field('subtitle') ): ?>
-		<p class="c-section__subtitle  c-txt--body-lg  c-txt--bold  u-txt--center  js-stagger-appear" style="max-width: <?php echo get_field('subtitle_width'); ?>ch;">
+		<p class="c-section__subtitle  c-txt--body-lg  c-txt--bold  u-txt--center  js-stagger-appear" style="max-width: <?php echo esc_html(get_field('subtitle_width')); ?>ch;">
 			<?php echo wp_kses_post( get_field('subtitle') ); ?>
 		</p>
 		<?php endif; ?>

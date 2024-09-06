@@ -155,7 +155,7 @@ get_header();
 
 /*---------------------------------------
     WP Customization
-	---------------------------------------*/
+---------------------------------------*/
 <?php if (get_theme_mod('phone_number')): ?>
 	<li>
 		<svg class="o-icon" role="presentation">

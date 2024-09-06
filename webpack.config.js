@@ -19,6 +19,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 
 const path = require('path');
+const fs = require('fs');
 
 /**
  * Generates an object of JavaScript entry points for Webpack, where the keys are the file names (without the .js extension) and the values are the absolute paths to the corresponding JavaScript files.
@@ -27,7 +28,6 @@ const path = require('path');
  *
  * @returns {Object} An object of JavaScript entry points for Webpack.
  */
-const fs = require('fs');
 const jsSourcePath = path.resolve(process.cwd(), 'src/js');
 const entry = fs.readdirSync(jsSourcePath).reduce((acc, fileName) => {
 	if (fileName.endsWith('.js')) {

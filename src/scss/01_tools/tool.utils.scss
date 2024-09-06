@@ -5,9 +5,11 @@
 .u-mrg--reset {
 	> :first-child {
 		margin-block-start: 0;
+		// margin-top: 0;
 	}
 	> :last-child {
 		margin-block-end: 0;
+		// margin-bottom: 0;
 	}
 }
 
@@ -39,6 +41,7 @@ $screenWidths: 320, 768, 1024, 1366;
 	.u-lines--#{$i} {
 		display: -webkit-box;
 		overflow: hidden;
+		line-clamp: #{$i};
 		-webkit-line-clamp: #{$i};
 		-webkit-box-orient: vertical;
 	}

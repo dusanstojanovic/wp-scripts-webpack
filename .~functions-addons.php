@@ -72,19 +72,21 @@ function themename_remove_jquery_migrate($scripts) {
 add_action('wp_default_scripts', 'themename_remove_jquery_migrate');
 
 /*---------------------------------------
-	defer scripts
+	Add defer attribute to specific scripts
 ---------------------------------------*/
-function themename_defer_scripts( $tag, $handle, $src ) {
-	$defer = array(
+function themename_defer_scripts($tag, $handle) {
+    // Array of script handles to defer
+    $scripts_to_defer = array(
 		'themename-app',
-		'themename-jquery',
+		'themename-app-jquery',
 	);
-	if ( in_array( $handle, $defer ) ) {
-		return '<script src="' . $src . '" defer></script>' . "\n";
-	}
-		return $tag;
+    // Check if the current script should be deferred
+    if (in_array($handle, $scripts_to_defer)) {
+        return str_replace(' src', ' defer src', $tag);
+    }
+    return $tag;
 }
-add_filter( 'script_loader_tag', 'themename_defer_scripts', 10, 3 );
+add_filter('script_loader_tag', 'themename_defer_scripts', 10, 2);
 
 /*---------------------------------------
 	Add page slug to body classes

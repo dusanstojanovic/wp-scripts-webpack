@@ -20,6 +20,10 @@ function raf(time) {
 	requestAnimationFrame(raf);
 }
 requestAnimationFrame(raf);
+/**
+ * Adds a click event listener to all anchor tags with an href starting with "#" to smoothly scroll to the target element.
+ * The scroll offset is set to -64 pixels to account for any fixed header or navigation.
+ */
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 	anchor.addEventListener('click', function (e) {
 		e.preventDefault();
