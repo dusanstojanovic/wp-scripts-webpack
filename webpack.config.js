@@ -11,15 +11,19 @@
  * Exports the modified webpack config object.
  */
 const defaultConfig = require('@wordpress/scripts/config/webpack.config');
-const IgnoreEmitWebPackPlugin = require('ignore-emit-webpack-plugin');
+const RemoveEmptyScriptsPlugin = require('webpack-remove-empty-scripts');
 const SVGSpritemapPlugin = require('svg-spritemap-webpack-plugin');
 const WebpackBuildNotifierPlugin = require('webpack-build-notifier');
 const CopyPlugin = require('copy-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
-
 const path = require('path');
 const fs = require('fs');
+
+const paths = {
+	scss: path.resolve(process.cwd(), 'src/scss', 'styles.scss'),
+	js: path.resolve(process.cwd(), 'src/js'),
+};
 
 /**
  * Generates an object of JavaScript entry points for Webpack, where the keys are the file names (without the .js extension) and the values are the absolute paths to the corresponding JavaScript files.
@@ -40,11 +44,11 @@ const entry = fs.readdirSync(jsSourcePath).reduce((acc, fileName) => {
 module.exports = {
 	...defaultConfig,
 	entry: {
-		style: path.resolve(process.cwd(), 'src/scss', 'styles.scss'),
+		style: paths.scss,
 		...entry,
 	},
-	output: {
-		path: path.resolve(__dirname, 'dist'),
+	externals: {
+		jquery: 'jQuery',
 	},
 	module: {
 		...defaultConfig.module,
@@ -74,7 +78,6 @@ module.exports = {
 	plugins: [
 		...defaultConfig.plugins,
 		new CleanWebpackPlugin(),
-		new IgnoreEmitWebPackPlugin(['style.js']),
 		new CopyPlugin({
 			patterns: [
 				{
@@ -102,8 +105,8 @@ module.exports = {
 		new BrowserSyncPlugin({
 			// prettier-ignore
 			files: [
-				'./../',
-				'./',
+				'./build/**/*',
+				'./**/*.php',
 				'!./node_modules',
 				'!./package.json',
 			],
@@ -112,6 +115,9 @@ module.exports = {
 			// 	key: '/Users/YOURACCOUNTNAME/Library/Application Support/Local/run/router/nginx/certs/websitename.local.key',
 			// 	cert: '/Users/YOURACCOUNTNAME/Library/Application Support/Local/run/router/nginx/certs/websitename.local.crt',
 			// },
+		}),
+		new RemoveEmptyScriptsPlugin({
+			stage: RemoveEmptyScriptsPlugin.STAGE_AFTER_PROCESS_PLUGINS,
 		}),
 	],
 };

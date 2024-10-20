@@ -2,18 +2,18 @@
 
 ## Usage
 
-1. Find/replace `themename` to your theme name
+1. Find/replace `themeslug` to your theme name slug
 2. Add your theme files
    * Source files are in `src/`
-   * Compiled files are in `dist/`
+   * Compiled files are in `build/`
 3. `npm install`
-4. `npm run start` or `npm start` : starts a watcher that will compile your files on change
-5. `npm run build` : builds your files
-   * `npm run bundle` : makes a zip file of your theme
+4. `npm run start` or `npm start` : watch for changes and compile
+5. `npm run build`: compile and minimize all files
+   * `npm run bundle` : bundle all theme files into zip file
 
-### Linting
--   `npm run lint:scss` : checks all SCSS files against [WordPress CSS Coding Standards](https://developer.wordpress.org/coding-standards/wordpress-coding-standards/css/).
--   `npm run lint:js` : checks all JS files against [WordPress JavaScript Coding Standards](https://developer.wordpress.org/coding-standards/wordpress-coding-standards/javascript/).
+## Linting
+-   `npm run lint:scss` : checks all `.scss` files against [CSS Coding Standards](https://developer.wordpress.org/coding-standards/wordpress-coding-standards/css/).
+-   `npm run lint:js` : checks all `.js` files against [JavaScript Coding Standards](https://developer.wordpress.org/coding-standards/wordpress-coding-standards/javascript/).
 
 ## Composer commands
 

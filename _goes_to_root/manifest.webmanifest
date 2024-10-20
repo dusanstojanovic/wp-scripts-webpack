@@ -1,7 +1,10 @@
-// manifest.webmanifest
 {
-  "icons": [
-    { "src": "/192.png", "type": "image/png", "sizes": "192x192" },
-    { "src": "/512.png", "type": "image/png", "sizes": "512x512" }
-  ]
+	"name": "themeslug",
+	"icons": [
+		{ "src": "/192.png", "type": "image/png", "sizes": "192x192" },
+		{ "src": "/512.png", "type": "image/png", "sizes": "512x512" }
+	],
+	"theme_color": "#f99b1d",
+	"background_color": "#FFFFFF",
+	"display": "standalone"
 }

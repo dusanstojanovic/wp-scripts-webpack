@@ -4,7 +4,7 @@
 	"description": "My block description",
 	"category": "formatting",
 	"icon": "info-outline",
-	"keywords": ["My block", "themename"],
+	"keywords": ["My block", "themeslug"],
 	"style": ["file:./my-block.css"],
 	"acf": {
 		"mode": "preview",

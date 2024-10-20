@@ -2,7 +2,7 @@
 /**
  * Title: Two boxes
  * Slug: two-boxes
- * Categories: themename-patterns
+ * Categories: themeslug-patterns
  * Keywords: boxes, content
  */
 ?>

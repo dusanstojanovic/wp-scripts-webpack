@@ -1,43 +1,45 @@
 @charset "UTF-8";
 
 /* settings */
-@import "00_settings/setting.vars";
-@import "01_tools/tool.mixins";
-@import "01_tools/tool.utils";
+@use "00_settings/vars" as vars;
+
+/* tools */
+@use "01_tools/mixins" as mixins;
+@use "01_tools/utils" as utils;
 
 /* resets */
-@import "02_defaults/default.normalize";
-@import "02_defaults/default.reset";
-@import "02_defaults/default.defaults";
+@use "02_defaults/normalize";
+@use "02_defaults/reset";
+@use "02_defaults/defaults";
 
 /* objects */
-@import "03_objects/object.layout";
-@import "03_objects/object.lists";
-@import "03_objects/object.constructions";
-@import "03_objects/object.icons";
+@use "03_objects/o-layouts";
+@use "03_objects/o-lists";
+@use "03_objects/o-constructions";
+@use "03_objects/o-icons";
 
 /* components */
-@import "04_components/component.layout";
-@import "04_components/component.typography";
-@import "04_components/component.header";
-@import "04_components/component.footer";
-@import "04_components/component.hero";
-@import "04_components/component.forms";
-@import "04_components/component.sections";
-@import "04_components/component.lists";
-@import "04_components/component.buttons";
-@import "04_components/component.sliders";
-@import "04_components/component.others";
+@use "04_components/layout";
+@use "04_components/typography";
+@use "04_components/header";
+@use "04_components/footer";
+@use "04_components/hero";
+@use "04_components/forms";
+@use "04_components/sections";
+@use "04_components/lists";
+@use "04_components/buttons";
+@use "04_components/sliders";
+@use "04_components/others";
 
 /* vendor css */
-@import "09_vendor/lenis";
-@import "09_vendor/swiper-bundle";
+@use "09_vendor/lenis";
+@use "09_vendor/swiper-bundle";
 
 /* other */
 // @import '10_misc/shame';
-@import "02_defaults/default.print";
+@use "02_defaults/print";
 
 /*---------------------------------------
 	Delete
 ---------------------------------------*/
-@import "demo";
+@use "demo";

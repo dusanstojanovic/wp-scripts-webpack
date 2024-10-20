@@ -1,9 +1,10 @@
+@use "sass:string";
 @use "sass:math";
 @use "sass:map";
 
 /*---------------------------------------
     Breakpoints Mixin
-    usage: @include bp(bp320)  {...}
+    usage: @include mixins.bp(bp320)  {...}
 ---------------------------------------*/
 $breakpoints: (
 	"bp320": 320px,
@@ -32,7 +33,7 @@ $breakpoints: (
 
 /*---------------------------------------
     Fluid values
-	usage: @include fluid-value(margin, 64, 128, 480, 1500);
+	usage: @include mixins.fluid-value(margin, 64, 128, 480, 1500);
 ---------------------------------------*/
 @mixin fluid-value($rule, $min-value, $max-value, $screen-min, $screen-max) {
 	#{$rule}: #{$min-value}px;
@@ -55,7 +56,7 @@ margin: clamp-calc(480px, 1024px, 240px, 520px);
 
 /*---------------------------------------
 	Clamped values
-	usage: margin-block-start: clamp-calc(480px, 1920px, 20px, 40px);
+	usage: margin-block-start: mixins.clamp-calc(480px, 1920px, 20px, 40px);
 ---------------------------------------*/
 @function clamp-calc($min-width, $max-width, $size-at-min-width, $size-at-max-width) {
 	$slope: calc(($size-at-max-width - $size-at-min-width) / ($max-width - $min-width));
@@ -66,10 +67,11 @@ margin: clamp-calc(480px, 1024px, 240px, 520px);
 
 /*---------------------------------------
 	Clamped values
-	font-size: #{fluid(16px, 31px, 320px, 960px)};
+	font-size: mixins.fluidsize(16px, 31px, 320px, 960px);
 ---------------------------------------*/
 $default-min-bp: 375px;
 $default-max-bp: 1920px;
+// Function to round a number to the specified number of decimal places
 @function roundify($number, $decimals: 0) {
 	$n: 1;
 	@if $decimals > 0 {
@@ -79,18 +81,20 @@ $default-max-bp: 1920px;
 	}
 	@return math.div(math.round($number * $n), $n);
 }
+// Convert px to rem
 @function px-to-rem($px) {
 	$rems: math.div($px, 16px) * 1rem;
 	@return $rems;
 }
-@function fluid($min-size, $max-size, $min-breakpoint: $default-min-bp, $max-breakpoint: $default-max-bp, $unit: vw) {
+// Main fluid size function, renamed to fluidsize for clarity
+@function fluidsize($min-size, $max-size, $min-breakpoint: $default-min-bp, $max-breakpoint: $default-max-bp, $unit: vw) {
+	// Calculate slope and intercept
 	$slope: math.div($max-size - $min-size, $max-breakpoint - $min-breakpoint);
 	$slope-to-unit: roundify($slope * 100, 2);
 	$intercept-rem: roundify(px-to-rem($min-size - $slope * $min-breakpoint), 2);
+	// Convert min and max sizes to rems
 	$min-size-rem: roundify(px-to-rem($min-size), 2);
 	$max-size-rem: roundify(px-to-rem($max-size), 2);
+	// Return a clamp() function for fluid scaling
 	@return clamp(#{$min-size-rem}, #{$slope-to-unit}#{$unit} + #{$intercept-rem}, #{$max-size-rem});
-}
-@function getUnit($value) {
-	@return str-slice($value * 0 + "", 2, -1);
 }

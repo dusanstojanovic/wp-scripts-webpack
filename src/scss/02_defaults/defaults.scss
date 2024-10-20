@@ -65,16 +65,25 @@ a {
 	text-decoration: none;
 	color: var(--c-link);
 	transition: color var(--base-transition-time) var(--base-timing-functon);
-	// word-break: break-all;
 
+	// word-break: break-all;
 	// * {
 	// 	word-break: normal;
 	// }
 
-	/* hovers */
-	&:hover,
-	&:active {
-		color: var(--c-link-hover);
+	/* states */
+	@media (pointer: fine) and (hover: hover) {
+		&:hover,
+		&:active,
+		&:focus-visible {
+			color: var(--c-link-hover);
+		}
+		&:focus {
+			outline: none;
+		}
+	}
+	&:focus-visible {
+		outline: 5px solid Highlight;
 	}
 }
 
@@ -149,6 +158,12 @@ hr {
 	height: 1px;
 	overflow: hidden;
 	clear: both;
+}
+
+button {
+	&:focus-visible {
+		outline: 5px solid Highlight;
+	}
 }
 
 blockquote {

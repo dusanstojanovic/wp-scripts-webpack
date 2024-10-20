@@ -17,21 +17,21 @@
 	margin increments
 	usage: class="w768:mt-3"
 ---------------------------------------*/
-$screenWidths: 320, 768, 1024, 1366;
-@each $screenWidth in $screenWidths {
-	@media (min-width: (0px + $screenWidth)) {
-		@for $i from 0 through 4 {
-			.w#{$screenWidth} {
-				&\:mt-#{$i} {
-					margin-block-start: calc(var(--base-spacing-unit, 1rem) * #{$i});
-				}
-				&\:mb-#{$i} {
-					margin-block-end: calc(var(--base-spacing-unit, 1rem) * #{$i});
-				}
-			}
-		}
-	}
-}
+// $screenWidths: 320, 768, 1024, 1366;
+// @each $screenWidth in $screenWidths {
+// 	@media (min-width: (0px + $screenWidth)) {
+// 		@for $i from 0 through 4 {
+// 			.w#{$screenWidth} {
+// 				&\:mt-#{$i} {
+// 					margin-block-start: calc(var(--base-spacing-unit, 1rem) * #{$i});
+// 				}
+// 				&\:mb-#{$i} {
+// 					margin-block-end: calc(var(--base-spacing-unit, 1rem) * #{$i});
+// 				}
+// 			}
+// 		}
+// 	}
+// }
 
 /*---------------------------------------
     line clamp

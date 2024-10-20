@@ -2,7 +2,7 @@
 /**
  * Title: Hero - simple
  * Slug: hero-simple
- * Categories: themename-patterns
+ * Categories: themeslug-patterns
  * Keywords: boxes, content
  */
 ?>

@@ -1,3 +1,8 @@
+@use "../01_tools/mixins" as mixins;
+
+/*---------------------------------------
+	Forms
+---------------------------------------*/
 :root {
 	--form-border-width: 1px;
 	--form-padding: 12px;
@@ -15,7 +20,7 @@
 	}
 
 	&__group + &__group {
-		margin-block-start: clamp-calc(480px, 1920px, 20px, 40px);
+		margin-block-start: mixins.clamp-calc(480px, 1920px, 20px, 40px);
 	}
 
 	/*---------------------------------------

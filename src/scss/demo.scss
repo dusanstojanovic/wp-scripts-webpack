@@ -1,3 +1,5 @@
+@use "01_tools/mixins" as mixins;
+
 /*---------------------------------------
 	Container queries
 ---------------------------------------*/
@@ -56,11 +58,11 @@ body > footer {
 .zzzzz {
 	display: flex;
 	display: grid;
-	border-bottom: clamp-calc(480px, 1280px, 16px, 64px) solid #333;
+	border-bottom: mixins.clamp-calc(480px, 1280px, 16px, 64px) solid #333;
 	background: linear-gradient(#e98a00, #f5aa2f);
 	background: linear-gradient(217deg, rgba(255, 0, 0, 0.8), rgba(255, 0, 0, 0) 70.71%), linear-gradient(127deg, rgba(0, 255, 0, 0.8), rgba(0, 255, 0, 0) 70.71%),
 		linear-gradient(336deg, rgba(0, 0, 255, 0.8), rgba(0, 0, 255, 0) 70.71%);
-	font-size: #{fluid(16px, 32px, 320px, 960px)};
+	font-size: mixins.fluidsize(16px, 32px, 320px, 960px);
 	appearance: none;
 	line-clamp: 2;
 
@@ -79,6 +81,7 @@ body > footer {
 
 .zzzzzzzzzzzz {
 	background-image: url("../img/bgicon-m2.svg");
+	font-size: mixins.fluidsize(16px, 31px, 320px, 960px);
 }
 
 /*---------------------------------------

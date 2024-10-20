@@ -1,3 +1,5 @@
+@use "../01_tools/mixins" as mixins;
+
 /*------------------------------------
     #Buttons
 ------------------------------------*/
@@ -5,7 +7,7 @@
 	--color-txt: #fff;
 	--color-txt-hov: #fff;
 	--color-bg: var(--c-black-900);
-	--color-bg-hov: var(--c-black-800);
+	--color-bg-hov: var(--c-black-500);
 
 	position: relative;
 	display: inline-block;
@@ -22,17 +24,24 @@
 	transition: all 0.3s var(--base-timing-functon);
 	appearance: none;
 
+	@media (pointer: fine) and (hover: hover) {
+		&:hover,
+		&:active,
+		&:focus-visible {
+			background-color: var(--color-bg-hov);
+			color: var(--color-txt-hov);
+			border-color: var(--color-bg-hov);
+		}
+		&:focus {
+			outline: none;
+		}
+	}
+	&:focus-visible {
+		outline: 5px solid Highlight;
+	}
 	&:active {
 		position: relative;
 		top: 1px;
-	}
-	&:focus {
-		outline: none;
-	}
-	&:hover {
-		background-color: var(--color-bg-hov);
-		color: var(--color-txt-hov);
-		border-color: var(--color-bg-hov);
 	}
 
 	&[disabled] {
