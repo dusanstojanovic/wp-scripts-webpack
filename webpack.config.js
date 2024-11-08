@@ -50,6 +50,9 @@ module.exports = {
 	externals: {
 		jquery: 'jQuery',
 	},
+	watchOptions: {
+		ignored: /node_modules|package\.json/, // Exclude node_modules and package.json from watching
+	},
 	module: {
 		...defaultConfig.module,
 		rules: [
@@ -106,9 +109,7 @@ module.exports = {
 			// prettier-ignore
 			files: [
 				'./build/**/*',
-				'./**/*.php',
-				'!./node_modules',
-				'!./package.json',
+				'./**/*.php'
 			],
 			reloadDelay: 1,
 			// https: {

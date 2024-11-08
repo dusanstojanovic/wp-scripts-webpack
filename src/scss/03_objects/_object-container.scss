@@ -1,0 +1,36 @@
+@use "../01_tools/tool-mixins" as mixins;
+
+/*---------------------------------------
+    Container
+---------------------------------------*/
+.o-container {
+	--container-gutter: 16px;
+
+	margin-inline: auto;
+	width: min(100% - var(--container-gutter) * 2, clamp(1152px, 80%, 1536px));
+
+	/* Breakpoints for gutters (as per ETONDIGITAL design system) */
+	@include mixins.bp(bp576) {
+		--container-gutter: 24px;
+	}
+
+	@include mixins.bp(bp1024) {
+		--container-gutter: 40px;
+	}
+
+	/* Optional variations */
+	&--sm {
+		width: min(100% - var(--container-gutter) * 2, 768px);
+	}
+
+	&--full {
+		width: min(100% - var(--container-gutter) * 2, 2560px); /* dont go above, ugly on 4K */
+	}
+}
+
+/*---------------------------------------
+	Nested containers shouldnt have gutters
+---------------------------------------*/
+[class*="o-container"] [class*="o-container"] {
+	--container-gutter: 0px;
+}

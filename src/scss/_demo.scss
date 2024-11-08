@@ -1,4 +1,4 @@
-@use "01_tools/mixins" as mixins;
+@use "01_tools/tool-mixins" as mixins;
 
 /*---------------------------------------
 	Container queries
@@ -53,16 +53,52 @@ body > footer {
 }
 
 /*---------------------------------------
+	Logo
+---------------------------------------*/
+.logo-row {
+	--base-height: 3rem;
+	--scale-factor-horizontal: 0.1;
+	--scale-factor-vertical: 0.6;
+	--logo-min-size: 0.5;
+	--logo-max-size: 1.25;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: var(--icon-gap, 2rem 3rem);
+	container-type: inline-size;
+}
+
+.logo {
+	--base-ratio: calc(var(--width) / var(--height));
+	--factor-horizontal: min(var(--scale-factor-horizontal) * -1 * var(--base-ratio) + var(--scale-factor-horizontal) + 1, 1);
+	--factor-vertical: max(var(--scale-factor-vertical) * -1 * var(--base-ratio) + var(--scale-factor-vertical) + 1, 1);
+
+	aspect-ratio: var(--base-ratio);
+	height: clamp(var(--base-height) * var(--logo-min-size), var(--base-height) * var(--factor-horizontal) * var(--factor-vertical), var(--base-height) * var(--logo-max-size));
+	//max-height: calc(100cqi * var(--height) / var(--width));
+	max-width: 100%;
+
+	& img,
+	& svg {
+		display: block;
+		width: 100%;
+		height: auto;
+	}
+}
+
+/*---------------------------------------
 	Testing autoprefixer, mixins and css background images
 ---------------------------------------*/
 .zzzzz {
 	display: flex;
 	display: grid;
-	border-bottom: mixins.clamp-calc(480px, 1280px, 16px, 64px) solid #333;
+	border-bottom: mixins.clamp-calc(16px, 64px) solid #333;
 	background: linear-gradient(#e98a00, #f5aa2f);
 	background: linear-gradient(217deg, rgba(255, 0, 0, 0.8), rgba(255, 0, 0, 0) 70.71%), linear-gradient(127deg, rgba(0, 255, 0, 0.8), rgba(0, 255, 0, 0) 70.71%),
 		linear-gradient(336deg, rgba(0, 0, 255, 0.8), rgba(0, 0, 255, 0) 70.71%);
-	font-size: mixins.fluidsize(16px, 32px, 320px, 960px);
+	font-size: mixins.fluid(16px, 32px, 320px, 960px);
 	appearance: none;
 	line-clamp: 2;
 
@@ -81,7 +117,10 @@ body > footer {
 
 .zzzzzzzzzzzz {
 	background-image: url("../img/bgicon-m2.svg");
-	font-size: mixins.fluidsize(16px, 31px, 320px, 960px);
+	font-size: mixins.fluid(16px, 31px, 320px, 960px);
+
+	// @include fluid-value(top, -40, -180, 375, 1920);
+	top: mixins.clamp-calc(-40px, -180px, 375px, 1920px);
 }
 
 /*---------------------------------------

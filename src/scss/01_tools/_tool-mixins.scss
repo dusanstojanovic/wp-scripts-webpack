@@ -3,6 +3,11 @@
 @use "sass:map";
 
 /*---------------------------------------
+	Set Base Font Size
+---------------------------------------*/
+$base-font-size: 16px;
+
+/*---------------------------------------
     Breakpoints Mixin
     usage: @include mixins.bp(bp320)  {...}
 ---------------------------------------*/
@@ -17,7 +22,7 @@ $breakpoints: (
 	"bp1920": 1920px,
 );
 @function px-to-em($px) {
-	$ems: math.div($px, 16px) * 1em;
+	$ems: math.div($px, $base-font-size) * 1em;
 	@return $ems;
 }
 @mixin bp($breakpoint) {
@@ -32,33 +37,18 @@ $breakpoints: (
 }
 
 /*---------------------------------------
-    Fluid values
-	usage: @include mixins.fluid-value(margin, 64, 128, 480, 1500);
+	Returns a CSS clamp function which resolves to $size-at-min-width
+	when page width is below $min-width,
+	$size-at-max-width when page width is above $max-width,
+	and linearly scales between the two between $min-width and $max-width
+	usage:
+	font-size: mixins.clamp-calc(16px, 32px);  // uses default breakpoints
+	font-size: mixins.clamp-calc(16px, 32px, 320px, 1280px);  // custom breakpoints
 ---------------------------------------*/
-@mixin fluid-value($rule, $min-value, $max-value, $screen-min, $screen-max) {
-	#{$rule}: #{$min-value}px;
-	@media only screen and (min-width: #{$screen-min}px) {
-		#{$rule}: calc(#{$min-value}px + #{($max-value - $min-value)} * (100vw - #{$screen-min}px) / (#{$screen-max} - #{$screen-min}));
-	}
-	@media only screen and (min-width: #{$screen-max}px) {
-		#{$rule}: #{$max-value}px;
-	}
-}
+$default-min-width: 375px;
+$default-max-width: 1280px;
 
-/*
-Returns a CSS clamp function which resolves to $size-at-min-width
-when page width is below $min-width,
-$size-at-max-width when page width is above $max-width,
-and linearly scales between the two between $min-width and $max-width
-usage:
-margin: clamp-calc(480px, 1024px, 240px, 520px);
-*/
-
-/*---------------------------------------
-	Clamped values
-	usage: margin-block-start: mixins.clamp-calc(480px, 1920px, 20px, 40px);
----------------------------------------*/
-@function clamp-calc($min-width, $max-width, $size-at-min-width, $size-at-max-width) {
+@function clamp-calc($size-at-min-width, $size-at-max-width, $min-width: $default-min-width, $max-width: $default-max-width) {
 	$slope: calc(($size-at-max-width - $size-at-min-width) / ($max-width - $min-width));
 	$y-axis-intersection: -1 * $min-width * $slope + $size-at-min-width;
 	$return-value: clamp(#{$size-at-min-width}, #{$y-axis-intersection} + #{$slope} * 100vw, #{$size-at-max-width});
@@ -67,10 +57,11 @@ margin: clamp-calc(480px, 1024px, 240px, 520px);
 
 /*---------------------------------------
 	Clamped values
-	font-size: mixins.fluidsize(16px, 31px, 320px, 960px);
+	font-size: mixins.fluid(16px, 32px); // uses default breakpoints
+	font-size: mixins.fluid(16px, 32px, 320px, 960px);  // custom breakpoints
 ---------------------------------------*/
 $default-min-bp: 375px;
-$default-max-bp: 1920px;
+$default-max-bp: 1280px;
 // Function to round a number to the specified number of decimal places
 @function roundify($number, $decimals: 0) {
 	$n: 1;
@@ -83,11 +74,11 @@ $default-max-bp: 1920px;
 }
 // Convert px to rem
 @function px-to-rem($px) {
-	$rems: math.div($px, 16px) * 1rem;
+	$rems: math.div($px, $base-font-size) * 1rem;
 	@return $rems;
 }
-// Main fluid size function, renamed to fluidsize for clarity
-@function fluidsize($min-size, $max-size, $min-breakpoint: $default-min-bp, $max-breakpoint: $default-max-bp, $unit: vw) {
+// Main fluid size function, renamed to fluid for clarity
+@function fluid($min-size, $max-size, $min-breakpoint: $default-min-bp, $max-breakpoint: $default-max-bp, $unit: vw) {
 	// Calculate slope and intercept
 	$slope: math.div($max-size - $min-size, $max-breakpoint - $min-breakpoint);
 	$slope-to-unit: roundify($slope * 100, 2);

@@ -5,11 +5,18 @@ Swiper.use(Navigation);
 // Swiper.use([Navigation, Grid, Autoplay, Controller]);
 
 /*---------------------------------------
+	Init
+---------------------------------------*/
+document.addEventListener('DOMContentLoaded', () => {
+	sliderExpertsInit();
+});
+
+/*---------------------------------------
 	Experts slider
 ---------------------------------------*/
 function sliderExpertsInit() {
 	const sliderExpertsElem = document.querySelector('.js-slider-experts');
-	const sliderExperts = new Swiper(sliderExpertsElem, {
+	new Swiper(sliderExpertsElem, {
 		// slidesPerView: 'auto',
 		slidesPerView: 'auto',
 		spaceBetween: 28,
@@ -20,4 +27,3 @@ function sliderExpertsInit() {
 		},
 	});
 }
-sliderExpertsInit();

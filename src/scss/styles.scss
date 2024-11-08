@@ -1,43 +1,43 @@
 @charset "UTF-8";
 
 /* settings */
-@use "00_settings/vars" as vars;
+@use "vars" as vars;
 
 /* tools */
-@use "01_tools/mixins" as mixins;
-@use "01_tools/utils" as utils;
+@use "01_tools/tool-mixins" as mixins;
+@use "01_tools/tool-utils" as utils;
 
 /* resets */
-@use "02_defaults/normalize";
-@use "02_defaults/reset";
-@use "02_defaults/defaults";
+@use "02_defaults/default-normalize";
+@use "02_defaults/default-reset";
+@use "02_defaults/default-defaults";
 
 /* objects */
-@use "03_objects/o-layouts";
-@use "03_objects/o-lists";
-@use "03_objects/o-constructions";
-@use "03_objects/o-icons";
+@use "03_objects/object-container";
+@use "03_objects/object-list";
+@use "03_objects/object-constructions";
+@use "03_objects/object-icon";
 
 /* components */
-@use "04_components/layout";
-@use "04_components/typography";
-@use "04_components/header";
-@use "04_components/footer";
-@use "04_components/hero";
-@use "04_components/forms";
-@use "04_components/sections";
-@use "04_components/lists";
-@use "04_components/buttons";
-@use "04_components/sliders";
-@use "04_components/others";
+@use "04_components/component-layout";
+@use "04_components/component-typography";
+@use "04_components/component-header";
+@use "04_components/component-footer";
+@use "04_components/component-hero";
+@use "04_components/component-form";
+@use "04_components/component-section";
+@use "04_components/component-list";
+@use "04_components/component-button";
+@use "04_components/component-slider";
+@use "04_components/component-others";
 
 /* vendor css */
-@use "09_vendor/lenis";
-@use "09_vendor/swiper-bundle";
+@use "09_vendor/vendor-lenis";
+@use "09_vendor/vendor-swiper-bundle";
 
 /* other */
-// @import '10_misc/shame';
-@use "02_defaults/print";
+// @use '10_misc/shame';
+@use "02_defaults/default-print";
 
 /*---------------------------------------
 	Delete

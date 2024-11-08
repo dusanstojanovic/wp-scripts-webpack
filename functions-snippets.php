@@ -1,9 +1,10 @@
 <?php
 
 /*---------------------------------------
-	Add theme support for post thumbnails and image size that is of container width
+	Main container width image size
+	(apparently, use it everywhere except for full width/hero images)
 ---------------------------------------*/
-add_image_size('sitewide', 1128, 1128);
+add_image_size('sitewide', 1128, 0);
 
 /*---------------------------------------
 	Enqueue stylesheets and scripts
@@ -28,6 +29,22 @@ function themeslug_assets() {
 }
 add_action( 'wp_enqueue_scripts', 'themeslug_assets' );
 
+/*---------------------------------------
+	Add defer attribute to specific scripts
+---------------------------------------*/
+function themeslug_defer_scripts($tag, $handle) {
+    // Array of script handles to defer
+    $scripts_to_defer = array(
+		'themeslug-app',
+		'themeslug-app-jquery',
+	);
+    // Check if the current script should be deferred
+    if (in_array($handle, $scripts_to_defer)) {
+        return str_replace(' src', ' defer src', $tag);
+    }
+    return $tag;
+}
+add_filter('script_loader_tag', 'themeslug_defer_scripts', 10, 2);
 
 /*---------------------------------------
 	Remove Gutemberg styles
@@ -87,23 +104,6 @@ function themeslug_remove_jquery_migrate($scripts) {
 	}
 }
 add_action('wp_default_scripts', 'themeslug_remove_jquery_migrate');
-
-/*---------------------------------------
-	Add defer attribute to specific scripts
----------------------------------------*/
-function themeslug_defer_scripts($tag, $handle) {
-    // Array of script handles to defer
-    $scripts_to_defer = array(
-		'themeslug-app',
-		'themeslug-app-jquery',
-	);
-    // Check if the current script should be deferred
-    if (in_array($handle, $scripts_to_defer)) {
-        return str_replace(' src', ' defer src', $tag);
-    }
-    return $tag;
-}
-add_filter('script_loader_tag', 'themeslug_defer_scripts', 10, 2);
 
 /*---------------------------------------
 	Add page slug to body classes
@@ -245,6 +245,24 @@ function print_backtrace_for_unsafe_html_removal( $function, $selector, $field_o
 	echo '<pre>';
 	debug_print_backtrace();
 	echo '</pre>';
+}
+
+/*---------------------------------------
+	Inline SVG function for ACF image field
+
+	$image_id = get_field('icon');
+	if ($image_id) {
+		echo inline_svg_from_acf($image_id);
+	}
+---------------------------------------*/
+function inline_svg_from_acf($image_id) {
+    $svg_file = get_attached_file($image_id);
+    if (file_exists($svg_file) && mime_content_type($svg_file) === 'image/svg+xml') {
+        $svg_content = file_get_contents($svg_file);
+        return $svg_content;
+    } else {
+        return;
+    }
 }
 
 /*---------------------------------------
